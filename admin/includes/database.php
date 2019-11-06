@@ -23,6 +23,18 @@ class Database
         }
     }
 
+    // Make query method
+    public function query($sql)
+    {
+        $result = mysqli_query($this->connect, $sql);
+
+        if (!$result) {
+            die("Query Failed! " . mysqli_error());
+        }
+
+        return $result;
+    }
+
 }
 
 // Instantiate the Database Class
