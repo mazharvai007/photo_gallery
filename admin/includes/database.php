@@ -27,12 +27,22 @@ class Database
     public function query($sql)
     {
         $result = mysqli_query($this->connect, $sql);
+        return $result;
+    }
 
+    // Make confirm mentod
+    private function confirm_query($result)
+    {
         if (!$result) {
             die("Query Failed! " . mysqli_error());
         }
+    }
 
-        return $result;
+    // Make escape string method
+    public function escape_string($string)
+    {
+        $escaped_string = mysqli_real_escape_string($this->connect, $string);
+        return $escaped_string;
     }
 
 }
