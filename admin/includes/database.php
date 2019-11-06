@@ -16,11 +16,6 @@ class Database
     // Connect with database using the method
     public function open_db_connect()
     {
-//        $this->connect = mysqli_connect(DB_HOST, DB_USER, DB_PASS,DB_NAME);
-//
-//        if (mysqli_connect_errno()) {
-//            die("Database connection is failed " . mysqli_error());
-//        }
 
         // Improving DB connect system
         $this->connect = new mysqli(DB_HOST, DB_USER, DB_PASS,DB_NAME);
@@ -33,8 +28,6 @@ class Database
     // Make query method
     public function query($sql)
     {
-//        $result = mysqli_query($this->connect, $sql);
-
         // Improve DB Query
         $result = $this->connect->query($sql);
         $this->confirm_query($result);
@@ -45,8 +38,6 @@ class Database
     private function confirm_query($result)
     {
         if (!$result) {
-//            die("Query Failed! " . mysqli_error());
-
             // Improve Query
             die("Query Failed! " . $this->connect->error);
         }
@@ -55,8 +46,6 @@ class Database
     // Make escape string method
     public function escape_string($string)
     {
-//        $escaped_string = mysqli_real_escape_string($this->connect, $string);
-
         // Improve Query
         $escaped_string = $this->connect->real_escape_string($string);
         return $escaped_string;
