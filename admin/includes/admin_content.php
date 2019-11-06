@@ -9,11 +9,16 @@
             </h1>
 
             <?php
-                if ($database->connect) {
-                    echo "Connected!";
-                } else {
-                    echo "Not connected!";
-                }
+                /*
+                 * Make a variable for DB query
+                 * Test to the Database class query method
+                 * Fetch the mysqli query as array
+                 */
+                $sql = "SELECT * FROM users WHERE user_id = 1";
+                $result = $database->query($sql);
+                $user_found = mysqli_fetch_array($result);
+
+                echo $user_found['username'];
             ?>
 
             <ol class="breadcrumb">
