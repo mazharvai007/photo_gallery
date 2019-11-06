@@ -27,6 +27,3 @@ class Database
 
 // Instantiate the Database Class
 $database = new Database();
-
-// Call the method
-$database->open_db_connect();
