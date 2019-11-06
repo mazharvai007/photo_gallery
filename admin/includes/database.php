@@ -3,12 +3,19 @@
 require_once ("config.php");
 
 // Create Database Class
-class Database {
+class Database
+{
 
-    private $connect;
+    public $connect;
+
+    function __construct()
+    {
+        $this->open_db_connect();
+    }
 
     // Connect with database using the method
-    public function open_db_connect() {
+    public function open_db_connect()
+    {
         $this->connect = mysqli_connect(DB_HOST, DB_USER, DB_PASS,DB_NAME);
 
         if (mysqli_connect_errno()) {
