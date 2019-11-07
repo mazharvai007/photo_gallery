@@ -10,3 +10,6 @@ class User
         return $result_set;
     }
 }
+
+// Instantiate the User Class
+$user = new User();

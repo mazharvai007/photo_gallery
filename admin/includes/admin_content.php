@@ -14,11 +14,12 @@
                  * Test to the Database class query method
                  * Fetch the mysqli query as array
                  */
-                $sql = "SELECT * FROM users WHERE user_id = 1";
-                $result = $database->query($sql);
-                $user_found = mysqli_fetch_array($result);
 
-                echo $user_found['username'];
+                // Get the users
+                $result = $user->find_all_users();
+                while ($row = mysqli_fetch_array($result)) {
+                    echo $row['username'] . "<br>";
+                }
             ?>
 
             <ol class="breadcrumb">
