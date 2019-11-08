@@ -16,7 +16,7 @@
                  */
 
                 // Get the users
-                $result = $user->find_all_users();
+                $result = User::find_all_users();
                 while ($row = mysqli_fetch_array($result)) {
                     echo $row['username'] . "<br>";
                 }

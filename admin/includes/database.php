@@ -34,7 +34,7 @@ class Database
         return $result;
     }
 
-    // Make confirm mentod
+    // Make confirm method
     private function confirm_query($result)
     {
         if (!$result) {
@@ -54,7 +54,7 @@ class Database
     // Make Insert ID method
     public function the_insert_id()
     {
-        return $this->connect->indert_id;
+        return $this->connect->insert_id;
     }
 
 }
