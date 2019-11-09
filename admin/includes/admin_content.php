@@ -20,6 +20,10 @@
                 while ($row = mysqli_fetch_array($result)) {
                     echo $row['username'] . "<br>";
                 }
+
+                // Found User
+                $found_user = User::find_user_by_id(2);
+                echo $found_user['username'];
             ?>
 
             <ol class="breadcrumb">
