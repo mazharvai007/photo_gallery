@@ -28,7 +28,7 @@ class User
     }
 
     // Instantiate method
-    public static function instantiation() {
+    public static function instantiation($found_user) {
         $the_object = new self();
 
         $the_object->user_id = $found_user['user_id'];
