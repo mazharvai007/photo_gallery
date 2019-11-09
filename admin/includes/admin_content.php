@@ -23,11 +23,7 @@
 
                 // Found User by id using array assigning to object properties
                 $found_user = User::find_user_by_id(2);
-                $user->user_id = $found_user['user_id'];
-                $user->username = $found_user['username'];
-                $user->password = $found_user['password'];
-                $user->first_name = $found_user['first_name'];
-                $user->last_name = $found_user['last_name'];
+
 
                 echo "User ID: " . $user->user_id . "<br>";
                 echo "Username: " . $user->username . "<br>";
