@@ -24,7 +24,13 @@ class User
     public static function find_this_query($sql) {
         global $database;
         $result = $database->query($sql);
-        return $result;
+        $the_object_array = array();
+
+        while ($row = mysqli_fetch_array($result)) {
+            $the_object_array[] = self::instantiation($row);
+        }
+
+        return $the_object_array;
     }
 
     // Instantiate method

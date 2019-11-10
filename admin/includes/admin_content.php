@@ -16,22 +16,22 @@
                  */
 
                 // Get the users
-//                $result = User::find_all_users();
-//                while ($row = mysqli_fetch_array($result)) {
-//                    echo $row['username'] . "<br>";
-//                }
+                $result = User::find_all_users();
+                while ($row = mysqli_fetch_array($result)) {
+                    echo $row['username'] . "<br>";
+                }
 
                 // Found User by id using array assigning to object properties
-                $found_user = User::find_user_by_id(2);
+//                $found_user = User::find_user_by_id(2);
 
                 // Use instantiation method to get users information
-                $user = User::instantiation($found_user);
+//                $user = User::instantiation($found_user);
 
-                echo "User ID: " . $user->user_id . "<br>";
-                echo "Username: " . $user->username . "<br>";
-                echo "Password: " . $user->password . "<br>";
-                echo "First Name: " . $user->first_name . "<br>";
-                echo "Last Name: " . $user->last_name . "<br>";
+//                echo "User ID: " . $user->user_id . "<br>";
+//                echo "Username: " . $user->username . "<br>";
+//                echo "Password: " . $user->password . "<br>";
+//                echo "First Name: " . $user->first_name . "<br>";
+//                echo "Last Name: " . $user->last_name . "<br>";
             ?>
 
             <ol class="breadcrumb">
