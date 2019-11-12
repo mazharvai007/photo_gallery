@@ -34,15 +34,25 @@
 //                echo "Last Name: " . $user->last_name . "<br>";
 
                 // Use instantiation method to find all users
-                $find_users = User::find_all_users();
-                foreach ($find_users as $user) {
-                    echo "User ID: " . $user->user_id . "<br>";
-                    echo "Username: " . $user->username . "<br>";
-                    echo "Password: " . $user->password . "<br>";
-                    echo "First Name: " . $user->first_name . "<br>";
-                    echo "Last Name: " . $user->last_name . "<br>";
-                    echo "<br>";
-                }
+//                $find_users = User::find_all_users();
+//                foreach ($find_users as $user) {
+//                    echo "User ID: " . $user->user_id . "<br>";
+//                    echo "Username: " . $user->username . "<br>";
+//                    echo "Password: " . $user->password . "<br>";
+//                    echo "First Name: " . $user->first_name . "<br>";
+//                    echo "Last Name: " . $user->last_name . "<br>";
+//                    echo "<br>";
+//                }
+
+                // Use instantiation method to find users by find_user_by_id method
+                $found_user = User::find_user_by_id(2);
+                echo "User ID: " . $found_user->user_id . "<br>";
+                echo "Username: " . $found_user->username . "<br>";
+                echo "Password: " . $found_user->password . "<br>";
+                echo "First Name: " . $found_user->first_name . "<br>";
+                echo "Last Name: " . $found_user->last_name . "<br>";
+                echo "<br>";
+
             ?>
 
             <ol class="breadcrumb">
