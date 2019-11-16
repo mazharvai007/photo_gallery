@@ -36,12 +36,19 @@ class User
     }
 
     // Make the method to verify the user
-    public static function verify_user()
+    public static function verify_user($username, $password)
     {
         global $database;
 
         $username = $database->escape_string($username);
         $password = $database->escape_string($password);
+
+        $user_query = "SELECT * FROM users WHERE username = '{$username}' AND password = '{$password}' LIMIT 1";
+
+        $the_result_array = self::find_this_query($user_query);
+
+        return !empty($the_result_array) ? array_shift($the_result_array) : false;
+
     }
 
     // Instantiate method
