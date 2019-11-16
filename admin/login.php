@@ -1,6 +1,6 @@
 <?php
 // Initialize the init.php file
-require_once("init.php");
+require_once("includes/init.php");
 
 // Check first the user is signed in or not. If signed in then redirect to index page of admin area
 if ($session->is_signed_in()) {
