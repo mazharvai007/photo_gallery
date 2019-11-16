@@ -10,6 +10,22 @@ class Session
     function __construct()
     {
         session_start();
+        $this->check_the_login();
+    }
+
+    // Make user signed in method to get the private property value to use anywhere
+    public function is_signed_in()
+    {
+        return $this->signed_in;
+    }
+
+    // Make login method
+    public function login($user)
+    {
+        if ($user) {
+            $this->user_id = $_SESSION['user_id'] = $user->user_id;
+            $this->signed_in = true;
+        }
     }
 
     // Check login
