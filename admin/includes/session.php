@@ -19,6 +19,7 @@ class Session
             $this->user_id = $_SESSION['user_id'];
             $this->signed_in = true;
         } else {
+            // When user id not found then unset
             unset($this->user_id);
             $this->signed_in = false;
         }
