@@ -16,13 +16,10 @@ class User
     // Find user by ID
     public static function find_user_by_id($user_id) {
         $the_result_array = self::find_this_query("SELECT * FROM users WHERE user_id = $user_id LIMIT 1");
-//        if (!empty($the_result_array)) {
-//            $first_item = array_shift($the_result_array);
-//            return $first_item;
-//        } else {
-//            return false;
-//        }
+
         return !empty($the_result_array) ? array_shift($the_result_array) : false;
+
+        return $found_user;
     }
 
     // Query method
@@ -36,6 +33,15 @@ class User
         }
 
         return $the_object_array;
+    }
+
+    // Make the method to verify the user
+    public static function verify_user()
+    {
+        global $database;
+
+        $username = $database->escape_string($username);
+        $password = $database->escape_string($password);
     }
 
     // Instantiate method
