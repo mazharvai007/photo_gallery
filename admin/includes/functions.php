@@ -18,3 +18,8 @@ function classAutoLoader($class) {
 
 // Any number of autoloader register the function
 spl_autoload_register('classAutoLoader');
+
+// Make Redirect function
+function redirect($location) {
+    header("Location: {$location}");
+}
