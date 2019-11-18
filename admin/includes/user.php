@@ -77,6 +77,13 @@ class User
         $object_properties = get_object_vars($this);
         return array_key_exists($the_attribute, $object_properties);
     }
+
+    // Make create method (The part of CRUD)
+    public function create()
+    {
+        global $database;
+        $create_sql = "INSERT INTO users (username, password, first_name, last_name) VALUES ('$database->escape_string($this->username)', '$database->escape_string($this->password)', '$database->escape_string($this->first_name)', '$database->escape_string($this->last_name)')";
+    }
 }
 
 // Instantiate the User Class
