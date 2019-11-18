@@ -29,7 +29,7 @@ class Database
     public function query($sql)
     {
         // Improve DB Query
-        $result = $this->connect->query($sql);
+        $result = mysqli_query($this->connect, $sql);
         $this->confirm_query($result);
         return $result;
     }
@@ -54,7 +54,7 @@ class Database
     // Make Insert ID method
     public function the_insert_id()
     {
-        return $this->connect->insert_id;
+        return mysqli_insert_id($this->connect);
     }
 
 }
