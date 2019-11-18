@@ -82,7 +82,12 @@ class User
     public function create()
     {
         global $database;
-        $create_sql = "INSERT INTO users (username, password, first_name, last_name) VALUES ('$database->escape_string($this->username)', '$database->escape_string($this->password)', '$database->escape_string($this->first_name)', '$database->escape_string($this->last_name)')";
+        $create_sql = "INSERT INTO users (username, password, first_name, last_name) ";
+        $create_sql .= "VALUES('";
+        $create_sql .= $database->escape_string($this->username) . "', '";
+        $create_sql .= $database->escape_string($this->password) . "', '";
+        $create_sql .= $database->escape_string($this->first_name) . "', '";
+        $create_sql .= $database->escape_string($this->last_name) . "')";
 
         if($database->query($create_sql)) {
             $this->user_id = $database->the_insert_id();

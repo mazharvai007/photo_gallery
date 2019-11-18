@@ -9,50 +9,12 @@
             </h1>
 
             <?php
-                /*
-                 * Make a variable for DB query
-                 * Test to the Database class query method
-                 * Fetch the mysqli query as array
-                 */
+                $user->username = "Abdullah";
+                $user->password = "123";
+                $user->first_name = "Abdullah";
+                $user->last_name = "Mazhar";
 
-                // Get the users
-//                $result = User::find_all_users();
-//                while ($row = mysqli_fetch_array($result)) {
-//                    echo $row['username'] . "<br>";
-//                }
-
-                // Found User by id using array assigning to object properties
-//                $found_user = User::find_user_by_id(2);
-
-                // Use instantiation method to get users information
-//                $user = User::instantiation($found_user);
-
-//                echo "User ID: " . $user->user_id . "<br>";
-//                echo "Username: " . $user->username . "<br>";
-//                echo "Password: " . $user->password . "<br>";
-//                echo "First Name: " . $user->first_name . "<br>";
-//                echo "Last Name: " . $user->last_name . "<br>";
-
-                // Use instantiation method to find all users
-//                $find_users = User::find_all_users();
-//                foreach ($find_users as $user) {
-//                    echo "User ID: " . $user->user_id . "<br>";
-//                    echo "Username: " . $user->username . "<br>";
-//                    echo "Password: " . $user->password . "<br>";
-//                    echo "First Name: " . $user->first_name . "<br>";
-//                    echo "Last Name: " . $user->last_name . "<br>";
-//                    echo "<br>";
-//                }
-
-                // Use instantiation method to find users by find_user_by_id method
-                $found_user = User::find_user_by_id(2);
-                echo "User ID: " . $found_user->user_id . "<br>";
-                echo "Username: " . $found_user->username . "<br>";
-                echo "Password: " . $found_user->password . "<br>";
-                echo "First Name: " . $found_user->first_name . "<br>";
-                echo "Last Name: " . $found_user->last_name . "<br>";
-                echo "<br>";
-
+                $user->create();
             ?>
 
             <ol class="breadcrumb">
