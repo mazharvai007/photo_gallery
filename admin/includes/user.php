@@ -112,6 +112,19 @@ class User
 
         return (mysqli_affected_rows($database->connect) == 1) ? true : false;
     }
+
+    // Make delete method (The part of CRUD)
+    public function delete()
+    {
+        global $database;
+        $delete_sql = "DELETE FROM users ";
+        $delete_sql .= "WHERE user_id=" . $database->escape_string($this->user_id);
+        $delete_sql .= " LIMIT 1";
+
+        $database->query($delete_sql);
+
+        return (mysqli_affected_rows($database->connect) == 1) ? true : false;
+    }
 }
 
 // Instantiate the User Class

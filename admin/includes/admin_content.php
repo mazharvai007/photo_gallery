@@ -15,15 +15,17 @@
 //                $user->password = "123";
 //                $user->first_name = "Abdullah";
 //                $user->last_name = "Mazhar";
-//
 //                $user->create();
 
                 // Update user
-                $user = User::find_user_by_id(8);
-                $user->first_name = "Ahmed";
-                $user->last_name = "Abdullah";
+//                $user = User::find_user_by_id(8);
+//                $user->first_name = "Ahmed";
+//                $user->last_name = "Abdullah";
+//                $user->update();
 
-                $user->update();
+                // Delete User
+                $user = User::find_user_by_id(7);
+                $user->delete();
             ?>
 
             <ol class="breadcrumb">
