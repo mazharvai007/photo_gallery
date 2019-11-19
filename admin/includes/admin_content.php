@@ -9,12 +9,21 @@
             </h1>
 
             <?php
-                $user->username = "Abdullah";
-                $user->password = "123";
-                $user->first_name = "Abdullah";
-                $user->last_name = "Mazhar";
 
-                $user->create();
+                // Create new user
+//                $user->username = "Abdullah";
+//                $user->password = "123";
+//                $user->first_name = "Abdullah";
+//                $user->last_name = "Mazhar";
+//
+//                $user->create();
+
+                // Update user
+                $user = User::find_user_by_id(8);
+                $user->first_name = "Ahmed";
+                $user->last_name = "Abdullah";
+
+                $user->update();
             ?>
 
             <ol class="breadcrumb">

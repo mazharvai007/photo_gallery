@@ -96,6 +96,22 @@ class User
             return false;
         }
     }
+
+    // Make update method (The part of CRUD)
+    public function update()
+    {
+        global $database;
+        $update_sql = "UPDATE users SET ";
+        $update_sql .= "username= '" . $database->escape_string($this->username) . "', ";
+        $update_sql .= "password= '" . $database->escape_string($this->password) . "', ";
+        $update_sql .= "first_name= '" . $database->escape_string($this->first_name) . "', ";
+        $update_sql .= "last_name= '" . $database->escape_string($this->last_name) . "' ";
+        $update_sql .= " WHERE user_id= " . $database->escape_string($this->user_id);
+
+        $database->query($update_sql);
+
+        return (mysqli_affected_rows($database->connect) == 1) ? true : false;
+    }
 }
 
 // Instantiate the User Class
