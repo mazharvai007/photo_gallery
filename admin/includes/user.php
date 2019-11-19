@@ -106,7 +106,7 @@ class User
         $update_sql .= "password= '" . $database->escape_string($this->password) . "', ";
         $update_sql .= "first_name= '" . $database->escape_string($this->first_name) . "', ";
         $update_sql .= "last_name= '" . $database->escape_string($this->last_name) . "' ";
-        $update_sql .= " WHERE id= " . $database->escape_string($this->user_id);
+        $update_sql .= " WHERE user_id= " . $database->escape_string($this->user_id);
 
         $database->query($update_sql);
 
