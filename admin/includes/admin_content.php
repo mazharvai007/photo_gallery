@@ -11,17 +11,17 @@
             <?php
 
                 // Create new user
-                $user->username = "abdullah";
-                $user->password = "123";
-                $user->first_name = "Abdullah";
-                $user->last_name = "Mazhar";
-                $user->create();
+//                $user->username = "abdullah";
+//                $user->password = "123";
+//                $user->first_name = "Abdullah";
+//                $user->last_name = "Mazhar";
+//                $user->create();
 
                 // Update user
-//                $user = User::find_user_by_id(8);
-//                $user->first_name = "Ahmed";
-//                $user->last_name = "Abdullah";
-//                $user->update();
+                $user = User::find_user_by_id(6);
+                $user->first_name = "Ahmed";
+                $user->last_name = "Abdullah";
+                $user->update();
 
             // Delete User
 //            $user = User::find_user_by_id(4);
