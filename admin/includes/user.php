@@ -80,7 +80,7 @@ class User
         $properties = array();
         foreach (self::$db_table_fields as $db_field) {
             if (property_exists($this, $db_field)) {
-                $properties[$db_field] = $this->db_field;
+                $properties[$db_field] = $this->$db_field;
             }
         }
 
@@ -107,8 +107,10 @@ class User
          */
         $properties = $this->properties();
 
-        $create_sql = "INSERT INTO " . self::$db_table . " (" . implode(",", array_keys($properties)) . ") ";
-        $create_sql .= "VALUES(' " . implode(",", array_values($properties)) . " ')";
+//        $create_sql = "INSERT INTO " . self::$db_table . "(" . implode(",", array_keys($properties)) . ") ";
+//        $create_sql .= "VALUES('" . implode("','", array_values($properties)) . "')";
+
+        $create_sql = "INSERT INTO " . self::$db_table . "(" . implode(", ", array_keys($properties)) . ") VALUES('" . implode("','", array_values($properties)) . "') ";
 
         if($database->query($create_sql)) {
             $this->user_id = $database->the_insert_id();
