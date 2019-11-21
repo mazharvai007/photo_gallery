@@ -73,6 +73,12 @@ class User
         return array_key_exists($the_attribute, $object_properties);
     }
 
+    // Make properties method for re-using
+    protected function properties()
+    {
+        return get_object_vars($this);
+    }
+
     // Improved the user create and update method by the save method
     public function save()
     {
@@ -83,7 +89,16 @@ class User
     public function create()
     {
         global $database;
-        $create_sql = "INSERT INTO " . self::$db_table . " (username, password, first_name, last_name) ";
+
+        /*
+         * Call the properties method
+         * remove users existing key
+         * call the properties variable inside the array_key
+         * inside the implode function
+         */
+        $properties = $this->properties();
+
+        $create_sql = "INSERT INTO " . self::$db_table . " (" . implode(",", array_keys($properties)) . ") ";
         $create_sql .= "VALUES('";
         $create_sql .= $database->escape_string($this->username) . "', '";
         $create_sql .= $database->escape_string($this->password) . "', '";
