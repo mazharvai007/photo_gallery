@@ -87,6 +87,17 @@ class User
         return $properties;
     }
 
+    protected function clean_properties()
+    {
+        global $database;
+        $property_clean = array();
+        foreach ($this->properties() as $key => $value) {
+            $property_clean[$key] = $database->escape_string($value);
+        }
+
+        return $property_clean;
+    }
+
     // Improved the user create and update method by the save method
     public function save()
     {
@@ -105,7 +116,7 @@ class User
          * inside the implode function to separated the values(keys) by comma
          * And use array_values method to get the values from the table
          */
-        $properties = $this->properties();
+        $properties = $this->clean_properties();
 
         $create_sql = "INSERT INTO " . self::$db_table . "(" . implode(", ", array_keys($properties)) . ") VALUES('" . implode("','", array_values($properties)) . "') ";
 
@@ -122,7 +133,7 @@ class User
     {
         global $database;
 
-        $properties = $this->properties();
+        $properties = $this->clean_properties();
         $properties_pairs = array();
 
         foreach ($properties as $key => $value) {
