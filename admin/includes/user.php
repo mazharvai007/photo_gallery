@@ -94,16 +94,13 @@ class User
          * Call the properties method
          * remove users existing key
          * call the properties variable inside the array_key
-         * inside the implode function
+         * inside the implode function to separated the values(keys) by comma
+         * And use array_values method to get the values from the table
          */
         $properties = $this->properties();
 
         $create_sql = "INSERT INTO " . self::$db_table . " (" . implode(",", array_keys($properties)) . ") ";
-        $create_sql .= "VALUES('";
-        $create_sql .= $database->escape_string($this->username) . "', '";
-        $create_sql .= $database->escape_string($this->password) . "', '";
-        $create_sql .= $database->escape_string($this->first_name) . "', '";
-        $create_sql .= $database->escape_string($this->last_name) . "')";
+        $create_sql .= "VALUES(' " . implode(",", array_values($properties)) . " ')";
 
         if($database->query($create_sql)) {
             $this->user_id = $database->the_insert_id();
