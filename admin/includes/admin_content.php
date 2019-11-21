@@ -23,20 +23,20 @@
 //                $user->last_name = "Abdullah";
 //                $user->update();
 
-                // Delete User
-//                $user = User::find_user_by_id(6);
-//                $user->delete();
+            // Delete User
+//            $user = User::find_user_by_id(4);
+//            $user->delete();
 
             // Create user
 //            $user->username = "abdullah";
 //            $user->save();
 
             // Update user
-            $user = User::find_user_by_id(3);
-            $user->password = '123';
-            $user->first_name = "Ahmed";
-            $user->last_name = "Abdullah";
-            $user->save();
+//            $user = User::find_user_by_id(4);
+//            $user->password = '123';
+//            $user->first_name = "Ahmed";
+//            $user->last_name = "Abdullah";
+//            $user->save();
 
             ?>
 

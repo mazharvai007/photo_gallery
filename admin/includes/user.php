@@ -2,6 +2,7 @@
 
 class User
 {
+    protected static $db_table = "users";
     public $user_id;
     public $username;
     public $password;
@@ -10,12 +11,12 @@ class User
 
     // Find all users
     public static function find_all_users() {
-        return self::find_this_query("SELECT * FROM users");
+        return self::find_this_query("SELECT * FROM " . self::$db_table . " ");
     }
 
     // Find user by ID
     public static function find_user_by_id($user_id) {
-        $the_result_array = self::find_this_query("SELECT * FROM users WHERE user_id = $user_id LIMIT 1");
+        $the_result_array = self::find_this_query("SELECT * FROM " . self::$db_table . " WHERE user_id = $user_id LIMIT 1");
 
         return !empty($the_result_array) ? array_shift($the_result_array) : false;
     }
@@ -41,7 +42,7 @@ class User
         $username = $database->escape_string($username);
         $password = $database->escape_string($password);
 
-        $user_query = "SELECT * FROM users WHERE username = '{$username}' AND password = '{$password}' LIMIT 1";
+        $user_query = "SELECT * FROM " . self::$db_table . " WHERE username = '{$username}' AND password = '{$password}' LIMIT 1";
 
         $the_result_array = self::find_this_query($user_query);
 
@@ -52,12 +53,6 @@ class User
     // Instantiate method
     public static function instantiation($the_record) {
         $the_object = new self();
-
-//        $the_object->user_id = $found_user['user_id'];
-//        $the_object->username = $found_user['username'];
-//        $the_object->password = $found_user['password'];
-//        $the_object->first_name = $found_user['first_name'];
-//        $the_object->last_name = $found_user['last_name'];
 
         /*
          * Using foreach loop to get users data to short way
@@ -88,7 +83,7 @@ class User
     public function create()
     {
         global $database;
-        $create_sql = "INSERT INTO users (username, password, first_name, last_name) ";
+        $create_sql = "INSERT INTO " . self::$db_table . " (username, password, first_name, last_name) ";
         $create_sql .= "VALUES('";
         $create_sql .= $database->escape_string($this->username) . "', '";
         $create_sql .= $database->escape_string($this->password) . "', '";
@@ -107,7 +102,7 @@ class User
     public function update()
     {
         global $database;
-        $update_sql = "UPDATE users SET ";
+        $update_sql = "UPDATE " . self::$db_table . " SET ";
         $update_sql .= "username= '" . $database->escape_string($this->username) . "', ";
         $update_sql .= "password= '" . $database->escape_string($this->password) . "', ";
         $update_sql .= "first_name= '" . $database->escape_string($this->first_name) . "', ";
@@ -123,7 +118,7 @@ class User
     public function delete()
     {
         global $database;
-        $delete_sql = "DELETE FROM users ";
+        $delete_sql = "DELETE FROM " . self::$db_table . " ";
         $delete_sql .= "WHERE user_id=" . $database->escape_string($this->user_id);
         $delete_sql .= " LIMIT 1";
 
