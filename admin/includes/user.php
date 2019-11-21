@@ -107,9 +107,6 @@ class User
          */
         $properties = $this->properties();
 
-//        $create_sql = "INSERT INTO " . self::$db_table . "(" . implode(",", array_keys($properties)) . ") ";
-//        $create_sql .= "VALUES('" . implode("','", array_values($properties)) . "')";
-
         $create_sql = "INSERT INTO " . self::$db_table . "(" . implode(", ", array_keys($properties)) . ") VALUES('" . implode("','", array_values($properties)) . "') ";
 
         if($database->query($create_sql)) {
@@ -124,11 +121,16 @@ class User
     public function update()
     {
         global $database;
+
+        $properties = $this->properties();
+        $properties_pairs = array();
+
+        foreach ($properties as $key => $value) {
+            $properties_pairs[] = "{$key}='{$value}'";
+        }
+
         $update_sql = "UPDATE " . self::$db_table . " SET ";
-        $update_sql .= "username= '" . $database->escape_string($this->username) . "', ";
-        $update_sql .= "password= '" . $database->escape_string($this->password) . "', ";
-        $update_sql .= "first_name= '" . $database->escape_string($this->first_name) . "', ";
-        $update_sql .= "last_name= '" . $database->escape_string($this->last_name) . "' ";
+        $update_sql .= implode(", ", $properties_pairs);
         $update_sql .= " WHERE user_id= " . $database->escape_string($this->user_id);
 
         $database->query($update_sql);
