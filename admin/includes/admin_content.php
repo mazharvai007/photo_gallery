@@ -24,8 +24,20 @@
 //                $user->update();
 
                 // Delete User
-                $user = User::find_user_by_id(7);
-                $user->delete();
+//                $user = User::find_user_by_id(6);
+//                $user->delete();
+
+            // Create user
+//            $user->username = "abdullah";
+//            $user->save();
+
+            // Update user
+            $user = User::find_user_by_id(3);
+            $user->password = '123';
+            $user->first_name = "Ahmed";
+            $user->last_name = "Abdullah";
+            $user->save();
+
             ?>
 
             <ol class="breadcrumb">

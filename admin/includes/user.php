@@ -78,6 +78,12 @@ class User
         return array_key_exists($the_attribute, $object_properties);
     }
 
+    // Improved the user create and update method by the save method
+    public function save()
+    {
+        return isset($this->user_id) ? $this->update() : $this->create();
+    }
+
     // Make create method (The part of CRUD)
     public function create()
     {
