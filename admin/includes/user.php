@@ -3,6 +3,7 @@
 class User
 {
     protected static $db_table = "users";
+    protected static $db_table_fields = array('username', 'password', 'first_name', 'last_name');
     public $user_id;
     public $username;
     public $password;
@@ -76,7 +77,14 @@ class User
     // Make properties method for re-using
     protected function properties()
     {
-        return get_object_vars($this);
+        $properties = array();
+        foreach (self::$db_table_fields as $db_field) {
+            if (property_exists($this, $db_field)) {
+                $properties[$db_field] = $this->db_field;
+            }
+        }
+
+        return $properties;
     }
 
     // Improved the user create and update method by the save method
