@@ -11,12 +11,12 @@ class User
     public $last_name;
 
     // Find all users
-    public static function find_all_users() {
+    public static function find_all() {
         return self::find_this_query("SELECT * FROM " . self::$db_table . " ");
     }
 
     // Find user by ID
-    public static function find_user_by_id($user_id) {
+    public static function find_by_id($user_id) {
         $the_result_array = self::find_this_query("SELECT * FROM " . self::$db_table . " WHERE user_id = $user_id LIMIT 1");
 
         return !empty($the_result_array) ? array_shift($the_result_array) : false;

@@ -18,13 +18,13 @@
 //                $user->create();
 
                 // Update user
-                $user = User::find_user_by_id(6);
+                $user = User::find_by_id(6);
                 $user->first_name = "Abdullah";
                 $user->last_name = "Mazhar";
                 $user->update();
 
             // Delete User
-//            $user = User::find_user_by_id(4);
+//            $user = User::find_by_id(4);
 //            $user->delete();
 
             // Create user
@@ -32,7 +32,7 @@
 //            $user->save();
 
             // Update user
-//            $user = User::find_user_by_id(4);
+//            $user = User::find_by_id(4);
 //            $user->password = '123';
 //            $user->first_name = "Ahmed";
 //            $user->last_name = "Abdullah";
