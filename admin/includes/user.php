@@ -3,13 +3,6 @@
 //Inherit the class
 class User extends DB_Object
 {
-    protected static $db_table = "users";
-    protected static $db_table_fields = array('username', 'password', 'first_name', 'last_name');
-    public $user_id;
-    public $username;
-    public $password;
-    public $first_name;
-    public $last_name;
 
     // Make the method to verify the user
     public static function verify_user($username, $password)

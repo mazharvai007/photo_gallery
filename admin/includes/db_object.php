@@ -2,14 +2,23 @@
 
 class DB_Object
 {
+
+    protected static $db_table = "users";
+    protected static $db_table_fields = array('username', 'password', 'first_name', 'last_name');
+    public $user_id;
+    public $username;
+    public $password;
+    public $first_name;
+    public $last_name;
+
     // Find all users
     public static function find_all() {
-        return self::find_this_query("SELECT * FROM " . self::$db_table . " ");
+        return static::find_this_query("SELECT * FROM " . static::$db_table . " ");
     }
 
     // Find user by ID
     public static function find_by_id($user_id) {
-        $the_result_array = self::find_this_query("SELECT * FROM " . self::$db_table . " WHERE user_id = $user_id LIMIT 1");
+        $the_result_array = static::find_this_query("SELECT * FROM " . static::$db_table . " WHERE user_id = $user_id LIMIT 1");
 
         return !empty($the_result_array) ? array_shift($the_result_array) : false;
     }
@@ -21,7 +30,7 @@ class DB_Object
         $the_object_array = array();
 
         while ($row = mysqli_fetch_array($result)) {
-            $the_object_array[] = self::instantiation($row);
+            $the_object_array[] = static::instantiation($row);
         }
 
         return $the_object_array;
@@ -29,7 +38,9 @@ class DB_Object
 
     // Instantiate method
     public static function instantiation($the_record) {
-        $the_object = new self();
+        $calling_class = get_called_class();
+
+        $the_object = new $calling_class;
 
         /*
          * Using foreach loop to get users data to short way

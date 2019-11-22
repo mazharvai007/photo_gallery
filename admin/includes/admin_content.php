@@ -10,6 +10,16 @@
 
             <?php
 
+            // Find Users
+            $users = User::find_all();
+            foreach ($users as $user) {
+                echo $user->username, '<br>';
+                echo $user->password, '<br>';
+                echo $user->first_name, '<br>';
+                echo $user->last_name, '<br>';
+                echo "<br>";
+            }
+
                 // Create new user
 //                $user->username = "abdullah";
 //                $user->password = "123";
@@ -18,10 +28,10 @@
 //                $user->create();
 
                 // Update user
-                $user = User::find_by_id(6);
-                $user->first_name = "Abdullah";
-                $user->last_name = "Mazhar";
-                $user->update();
+//                $user = User::find_by_id(6);
+//                $user->first_name = "Abdullah";
+//                $user->last_name = "Mazhar";
+//                $user->update();
 
             // Delete User
 //            $user = User::find_by_id(4);
