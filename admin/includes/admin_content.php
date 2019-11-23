@@ -11,27 +11,29 @@
             <?php
 
             // Find Users
-            $users = User::find_all();
-            foreach ($users as $user) {
-                echo $user->username, '<br>';
-                echo $user->password, '<br>';
-                echo $user->first_name, '<br>';
-                echo $user->last_name, '<br>';
-                echo "<br>";
-            }
+//            $users = User::find_all();
+//            foreach ($users as $user) {
+//                echo $user->username, '<br>';
+//                echo $user->password, '<br>';
+//                echo $user->first_name, '<br>';
+//                echo $user->last_name, '<br>';
+//                echo "<br>";
+//            }
 
-                // Create new user
-//                $user->username = "abdullah";
-//                $user->password = "123";
-//                $user->first_name = "Abdullah";
-//                $user->last_name = "Mazhar";
-//                $user->create();
+            // Create new user
+//            $user->username = "karim";
+//            $user->password = "123";
+//            $user->first_name = "Muhammad";
+//            $user->last_name = "Karim";
+//            $user->create();
 
-                // Update user
-//                $user = User::find_by_id(6);
-//                $user->first_name = "Abdullah";
-//                $user->last_name = "Mazhar";
-//                $user->update();
+            // Update user
+//            $user = User::find_by_id(4);
+//            $user->username = "jamal";
+//            $user->password = "123";
+//            $user->first_name = "Muhammad";
+//            $user->last_name = "Jamal";
+//            $user->update();
 
             // Delete User
 //            $user = User::find_by_id(4);
