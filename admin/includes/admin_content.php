@@ -21,11 +21,11 @@
 //            }
 
             // Create new user
-//            $user->username = "karim";
-//            $user->password = "123";
-//            $user->first_name = "Muhammad";
-//            $user->last_name = "Karim";
-//            $user->create();
+            $user->username = "karim";
+            $user->password = "123";
+            $user->first_name = "Muhammad";
+            $user->last_name = "Karim";
+            $user->create();
 
             // Update user
 //            $user = User::find_by_id(4);
