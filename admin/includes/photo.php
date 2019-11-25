@@ -34,7 +34,10 @@ class Photo extends DB_Object
     public function set_file($file)
     {
 
-        // Check the file is empty or not file or not array, and if not upload the file, then throwing error.
+        /*
+         * Check the file is empty or not file or not array
+         * If not upload the file, then throwing error.
+         */
         if (empty($file) || !$file || !is_array($file)) {
             $this->errors[] = "There was no file uploaded here";
             return false;
@@ -48,6 +51,31 @@ class Photo extends DB_Object
             $this->photo_size = $file['size'];
         }
 
+    }
+
+    /*
+     * Make save method
+     *
+     * If photo id is available, then update the photos table.
+     * If not, then insert data in the photos table of database
+     */
+    public function save()
+    {
+        if ($this->photo_id) {
+            $this->update();
+        } else {
+
+            if (!empty($this->errors)) {
+                return false;
+            } elseif (empty($this->photo_filename) || empty($this->tmp_path)) {
+                $this->errors[] = "The file was not available";
+                return false;
+            }
+
+            $target_path = SITE_ROOT . DS . 'admin' . DS . $this->upload_directory . DS . $this->photo_filename;
+
+            $this->create();
+        }
     }
 
 }
