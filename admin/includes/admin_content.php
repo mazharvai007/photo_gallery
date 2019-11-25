@@ -60,16 +60,18 @@
 //            $photo->create();
 
             // Find data from the photos table
-            $photos = Photo::find_all();
-            foreach ($photos as $photo) {
-                echo $photo->photo_id, "<br>";
-                echo $photo->photo_title, "<br>";
-                echo $photo->photo_des, "<br>";
-                echo $photo->photo_filename, "<br>";
-                echo $photo->photo_type, "<br>";
-                echo $photo->photo_size, "<br>";
-                echo "<br>";
-            }
+//            $photos = Photo::find_all();
+//            foreach ($photos as $photo) {
+//                echo $photo->photo_id, "<br>";
+//                echo $photo->photo_title, "<br>";
+//                echo $photo->photo_des, "<br>";
+//                echo $photo->photo_filename, "<br>";
+//                echo $photo->photo_type, "<br>";
+//                echo $photo->photo_size, "<br>";
+//                echo "<br>";
+//            }
+
+            echo INCLUDES_PATH;
 
             ?>
 
