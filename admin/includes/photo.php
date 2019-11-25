@@ -74,7 +74,24 @@ class Photo extends DB_Object
 
             $target_path = SITE_ROOT . DS . 'admin' . DS . $this->upload_directory . DS . $this->photo_filename;
 
-            $this->create();
+            /*
+             * Check the uploaded file is exists in the targeted path then return false
+             * If not exist then upload the file
+             * Sometimes for the permission reason the file does not upload, then throwing the else blog message.
+             */
+            if (file_exists($target_path)) {
+                $this->errors[] = "The file {$this->photo_filename} already exists.";
+                return false;
+            } elseif (move_uploaded_file($this->tmp_path, $target_path)) {
+                // If upload file and create then unset the temporary path
+                if ($this->create()) {
+                    unset($this->tmp_path);
+                    return true;
+                }
+            } else {
+                $this->errors[] = "The file directory probably does not have permission.";
+                return false;
+            }
         }
     }
 
