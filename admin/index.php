@@ -1,7 +1,7 @@
 <?php
     include("includes/header.php");
 
-    // If user is not signed in, the redirector to login page
+    // If user is not signed in, the redirect to login page
     if (!$session->is_signed_in()) {
         redirect("login.php");
     }

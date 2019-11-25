@@ -1,4 +1,11 @@
-<?php include("includes/header.php"); ?>
+<?php
+    include("includes/header.php");
+
+    // If user is not signed in, the redirect to login page
+    if (!$session->is_signed_in()) {
+        redirect("login.php");
+    }
+?>
 
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -28,6 +35,18 @@
                                 <i class="fa fa-file"></i> Upload
                             </li>
                         </ol>
+                    </div>
+
+                    <div class="col-md-6 col-md-offset-3">
+                        <form action=upload.php"" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="title" name="title" placeholder="Title">
+                            </div>
+                            <div class="form-group">
+                                <input type="file" id="file_upload" class="form-control" name="file_upload">
+                            </div>
+                            <button type="submit" class="btn btn-default">Submit</button>
+                        </form>
                     </div>
                 </div>
                 <!-- /.row -->
