@@ -5,6 +5,18 @@
     if (!$session->is_signed_in()) {
         redirect("login.php");
     }
+
+    $message = "";
+    if (isset($_POST['submit'])) {
+        $photo->photo_title = $_POST['title'];
+        $photo->set_file($_FILES['file_upload']);
+
+        if ($photo->save()) {
+            $message = "Photo uploaded successfully!";
+        } else {
+            $message = join("<br>", $photo->errors);
+        }
+    }
 ?>
 
         <!-- Navigation -->
@@ -38,14 +50,15 @@
                     </div>
 
                     <div class="col-md-6 col-md-offset-3">
-                        <form action=upload.php"" method="post" enctype="multipart/form-data">
+                        <?php echo $message; ?>
+                        <form action="upload.php" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <input type="text" class="form-control" id="title" name="title" placeholder="Title">
                             </div>
                             <div class="form-group">
                                 <input type="file" id="file_upload" class="form-control" name="file_upload">
                             </div>
-                            <button type="submit" class="btn btn-default">Submit</button>
+                            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
                 </div>
