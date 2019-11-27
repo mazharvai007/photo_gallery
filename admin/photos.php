@@ -1,4 +1,14 @@
-<?php include("includes/header.php"); ?>
+<?php
+    include("includes/header.php");
+
+    // If user is not signed in, the redirect to login page
+    if (!$session->is_signed_in()) {
+        redirect("login.php");
+    }
+
+    // Find all photos
+    $photos = Photo::find_all();
+?>
 
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -31,6 +41,38 @@
                     </div>
                 </div>
                 <!-- /.row -->
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Photo</th>
+                                        <th>Title</th>
+                                        <th>Description</th>
+                                        <th>File Name</th>
+                                        <th>Size</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <?php foreach ($photos as $photo) : ?>
+                                    <tr>
+                                        <td><?php echo $photo->photo_id; ?></td>
+                                        <td><img src="<?php echo $photo->image_path(); ?>" alt=""></td>
+                                        <td><?php echo $photo->photo_title; ?></td>
+                                        <td><?php echo $photo->photo_des; ?></td>
+                                        <td><?php echo $photo->photo_filename; ?></td>
+                                        <td><?php echo $photo->photo_size; ?></td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
 
             </div>
             <!-- /.container-fluid -->
