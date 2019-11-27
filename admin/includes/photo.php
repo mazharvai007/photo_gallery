@@ -54,6 +54,15 @@ class Photo extends DB_Object
     }
 
     /*
+     * Dynamic Image Path Method
+     */
+
+    public function image_path()
+    {
+        return $this->upload_directory.DS.$this->photo_filename;
+    }
+
+    /*
      * Make save method
      *
      * If photo id is available, then update the photos table.

@@ -71,7 +71,7 @@
 //                echo "<br>";
 //            }
 
-//            echo INCLUDES_PATH;
+            echo INCLUDES_PATH;
 
             ?>
 

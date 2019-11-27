@@ -9,6 +9,7 @@
     $message = "";
     if (isset($_POST['submit'])) {
         $photo->photo_title = $_POST['title'];
+        $photo->photo_des = $_POST['description'];
         $photo->set_file($_FILES['file_upload']);
 
         if ($photo->save()) {
@@ -48,12 +49,18 @@
                             </li>
                         </ol>
                     </div>
+                </div>
+                <!-- /.row -->
 
+                <div class="row">
                     <div class="col-md-6 col-md-offset-3">
                         <?php echo $message; ?>
                         <form action="upload.php" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <input type="text" class="form-control" id="title" name="title" placeholder="Title">
+                            </div>
+                            <div class="form-group">
+                                <textarea name="description" id="description" cols="30" rows="10" class="form-control" placeholder="Description"></textarea>
                             </div>
                             <div class="form-group">
                                 <input type="file" id="file_upload" class="form-control" name="file_upload">
@@ -62,7 +69,6 @@
                         </form>
                     </div>
                 </div>
-                <!-- /.row -->
 
             </div>
             <!-- /.container-fluid -->
