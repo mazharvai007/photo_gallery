@@ -5,7 +5,7 @@ class DB_Object
 
     protected static $db_table = "users";
     protected static $db_table_fields = array('username', 'password', 'first_name', 'last_name');
-    public $user_id;
+    public $id;
     public $username;
     public $password;
     public $first_name;
@@ -17,8 +17,8 @@ class DB_Object
     }
 
     // Find user by ID
-    public static function find_by_id($user_id) {
-        $the_result_array = static::find_by_query("SELECT * FROM " . static::$db_table . " WHERE user_id = $user_id LIMIT 1");
+    public static function find_by_id($id) {
+        $the_result_array = static::find_by_query("SELECT * FROM " . static::$db_table . " WHERE id = $id LIMIT 1");
 
         return !empty($the_result_array) ? array_shift($the_result_array) : false;
     }
