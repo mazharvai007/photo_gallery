@@ -1,8 +1,9 @@
 <?php
+    ///home/mazhar/www/
 
 // Making Directory Path
 define("DS", DIRECTORY_SEPARATOR);
-define('SITE_ROOT', 'E:' . DS . 'MAMP' . DS . 'htdocs' . DS . 'photo_gallery');
+define('SITE_ROOT', DS . 'home' . DS . 'mazhar' . DS . 'www' . DS . 'practice' . DS . 'php' . DS . 'photo_gallery');
 defined("INCLUDES_PATH") ? null : define('INCLUDES_PATH', SITE_ROOT.DS.'admin'.DS.'includes');
 
 // Files added

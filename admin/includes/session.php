@@ -45,7 +45,7 @@ class Session
     public function login($user)
     {
         if ($user) {
-            $this->user_id = $_SESSION['user_id'] = $user->user_id;
+            $this->user_id = $_SESSION['id'] = $user->id;
             $this->signed_in = true;
         }
     }
@@ -53,7 +53,7 @@ class Session
     // Make Logout method
     public function logout()
     {
-        unset($_SESSION['user_id']);
+        unset($_SESSION['id']);
         unset($this->user_id);
         $this->signed_in = false;
     }
@@ -61,8 +61,8 @@ class Session
     // Check login
     private function check_the_login()
     {
-        if (isset($_SESSION['user_id'])) {
-            $this->user_id = $_SESSION['user_id'];
+        if (isset($_SESSION['id'])) {
+            $this->user_id = $_SESSION['id'];
             $this->signed_in = true;
         } else {
             // When user id not found then unset

@@ -104,6 +104,24 @@ class Photo extends DB_Object
         }
     }
 
+    /*
+     * Make delete method
+     *
+     * It will make three things
+     * 1. Delete from Database
+     * 2. Delete from table of adimin
+     * 3. Delete file from server/directory
+     */
+    public function delete_photo()
+    {
+        if ($this->delete()) {
+            $target_path = SITE_ROOT.DS.'admin'.DS.$this->image_path();
+            return unlink($target_path) ? true : false;
+        } else {
+            return false;
+        }
+    }
+
 }
 
 $photo = new Photo();

@@ -88,7 +88,7 @@ class DB_Object
     // Improved the user create and update method by the save method
     public function save()
     {
-        return isset($this->user_id) ? $this->update() : $this->create();
+        return isset($this->id) ? $this->update() : $this->create();
     }
 
     // Make create method (The part of CRUD)
@@ -108,7 +108,7 @@ class DB_Object
         $create_sql = "INSERT INTO " . static::$db_table . "(" . implode(", ", array_keys($properties)) . ") VALUES('" . implode("','", array_values($properties)) . "') ";
 
         if($database->query($create_sql)) {
-            $this->user_id = $database->the_insert_id();
+            $this->id = $database->the_insert_id();
             return true;
         } else {
             return false;
@@ -129,7 +129,7 @@ class DB_Object
 
         $update_sql = "UPDATE " . static::$db_table . " SET ";
         $update_sql .= implode(", ", $properties_pairs);
-        $update_sql .= " WHERE user_id= " . $database->escape_string($this->user_id);
+        $update_sql .= " WHERE id= " . $database->escape_string($this->id);
 
         $database->query($update_sql);
 
@@ -141,7 +141,7 @@ class DB_Object
     {
         global $database;
         $delete_sql = "DELETE FROM " . static::$db_table . " ";
-        $delete_sql .= "WHERE user_id=" . $database->escape_string($this->user_id);
+        $delete_sql .= "WHERE id=" . $database->escape_string($this->id);
         $delete_sql .= " LIMIT 1";
 
         $database->query($delete_sql);

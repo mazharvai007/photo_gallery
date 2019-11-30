@@ -51,8 +51,9 @@
                                         <th>Id</th>
                                         <th>Photo</th>
                                         <th>Title</th>
-<!--                                        <th>Description</th>-->
+                                        <th>Description</th>
                                         <th>File Name</th>
+                                        <th>Type</th>
                                         <th>Size</th>
                                     </tr>
                                 </thead>
@@ -71,8 +72,9 @@
                                             </div>
                                         </td>
                                         <td><?php echo $photo->photo_title; ?></td>
-<!--                                        <td>--><?php //echo $photo->photo_des; ?><!--</td>-->
+                                        <td><?php echo $photo->photo_des; ?></td>
                                         <td><?php echo $photo->photo_filename; ?></td>
+                                        <td><?php echo $photo->photo_type; ?></td>
                                         <td><?php echo $photo->photo_size; ?></td>
                                     </tr>
                                     <?php endforeach; ?>
