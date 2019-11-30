@@ -67,7 +67,7 @@
                                             <p></p>
                                             <div class="pictures_link btn-group">
                                                 <a href="#" class="btn btn-primary">View</a>
-                                                <a href="#" class="btn btn-info">Edit</a>
+                                                <a href="edit_photo.php/?id=<?php echo $photo->id; ?>" class="btn btn-info">Edit</a>
                                                 <a href="delete_photo.php/?id=<?php echo $photo->id; ?>" class="btn btn-danger">Delete</a>
                                             </div>
                                         </td>
