@@ -5,7 +5,7 @@ class Photo extends DB_Object
 {
     protected static $db_table = "photos";
     protected static $db_table_fields = array('photo_title', 'photo_des', 'photo_filename', 'photo_type', 'photo_size');
-    public $photo_id;
+    public $id;
     public $photo_title;
     public $photo_des;
     public $photo_filename;
@@ -70,7 +70,7 @@ class Photo extends DB_Object
      */
     public function save()
     {
-        if ($this->photo_id) {
+        if ($this->id) {
             $this->update();
         } else {
 
@@ -101,6 +101,24 @@ class Photo extends DB_Object
                 $this->errors[] = "The file directory probably does not have permission.";
                 return false;
             }
+        }
+    }
+
+    /*
+     * Make delete method
+     *
+     * It will make three things
+     * 1. Delete from Database
+     * 2. Delete from table of adimin
+     * 3. Delete file from server/directory
+     */
+    public function delete_photo()
+    {
+        if ($this->delete()) {
+            $target_path = SITE_ROOT.DS.'admin'.DS.$this->image_path();
+            return unlink($target_path) ? true : false;
+        } else {
+            return false;
         }
     }
 

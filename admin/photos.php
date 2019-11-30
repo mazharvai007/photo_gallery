@@ -53,6 +53,7 @@
                                         <th>Title</th>
                                         <th>Description</th>
                                         <th>File Name</th>
+                                        <th>Type</th>
                                         <th>Size</th>
                                     </tr>
                                 </thead>
@@ -60,11 +61,20 @@
                                 <tbody>
                                     <?php foreach ($photos as $photo) : ?>
                                     <tr>
-                                        <td><?php echo $photo->photo_id; ?></td>
-                                        <td><img src="<?php echo $photo->image_path(); ?>" alt=""></td>
+                                        <td><?php echo $photo->id; ?></td>
+                                        <td>
+                                            <img src="<?php echo $photo->image_path(); ?>" alt="" class="img-responsive img-thumbnail">
+                                            <p></p>
+                                            <div class="pictures_link btn-group">
+                                                <a href="#" class="btn btn-primary">View</a>
+                                                <a href="#" class="btn btn-info">Edit</a>
+                                                <a href="delete_photo.php/?id=<?php echo $photo->id; ?>" class="btn btn-danger">Delete</a>
+                                            </div>
+                                        </td>
                                         <td><?php echo $photo->photo_title; ?></td>
                                         <td><?php echo $photo->photo_des; ?></td>
                                         <td><?php echo $photo->photo_filename; ?></td>
+                                        <td><?php echo $photo->photo_type; ?></td>
                                         <td><?php echo $photo->photo_size; ?></td>
                                     </tr>
                                     <?php endforeach; ?>
