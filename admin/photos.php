@@ -51,8 +51,10 @@
                                         <th>Id</th>
                                         <th>Photo</th>
                                         <th>Title</th>
+                                        <th>Caption</th>
                                         <th>Description</th>
                                         <th>File Name</th>
+                                        <th>AltText</th>
                                         <th>Type</th>
                                         <th>Size</th>
                                     </tr>
@@ -67,13 +69,15 @@
                                             <p></p>
                                             <div class="pictures_link btn-group">
                                                 <a href="#" class="btn btn-primary">View</a>
-                                                <a href="#" class="btn btn-info">Edit</a>
-                                                <a href="delete_photo.php/?id=<?php echo $photo->id; ?>" class="btn btn-danger">Delete</a>
+                                                <a href="edit_photo.php?id=<?php echo $photo->id; ?>" class="btn btn-info">Edit</a>
+                                                <a href="delete_photo.php?id=<?php echo $photo->id; ?>" class="btn btn-danger">Delete</a>
                                             </div>
                                         </td>
                                         <td><?php echo $photo->photo_title; ?></td>
+                                        <td><?php echo $photo->photo_caption; ?></td>
                                         <td><?php echo $photo->photo_des; ?></td>
                                         <td><?php echo $photo->photo_filename; ?></td>
+                                        <td><?php echo $photo->photo_altText; ?></td>
                                         <td><?php echo $photo->photo_type; ?></td>
                                         <td><?php echo $photo->photo_size; ?></td>
                                     </tr>
