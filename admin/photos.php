@@ -51,8 +51,10 @@
                                         <th>Id</th>
                                         <th>Photo</th>
                                         <th>Title</th>
+                                        <th>Caption</th>
                                         <th>Description</th>
                                         <th>File Name</th>
+                                        <th>AltText</th>
                                         <th>Type</th>
                                         <th>Size</th>
                                     </tr>
@@ -72,8 +74,10 @@
                                             </div>
                                         </td>
                                         <td><?php echo $photo->photo_title; ?></td>
+                                        <td><?php echo $photo->photo_caption; ?></td>
                                         <td><?php echo $photo->photo_des; ?></td>
                                         <td><?php echo $photo->photo_filename; ?></td>
+                                        <td><?php echo $photo->photo_altText; ?></td>
                                         <td><?php echo $photo->photo_type; ?></td>
                                         <td><?php echo $photo->photo_size; ?></td>
                                     </tr>

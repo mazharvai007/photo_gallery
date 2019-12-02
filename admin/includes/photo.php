@@ -4,11 +4,13 @@
 class Photo extends DB_Object
 {
     protected static $db_table = "photos";
-    protected static $db_table_fields = array('photo_title', 'photo_des', 'photo_filename', 'photo_type', 'photo_size');
+    protected static $db_table_fields = array('photo_title', 'photo_caption', 'photo_des', 'photo_filename', 'photo_altText', 'photo_type', 'photo_size');
     public $id;
     public $photo_title;
+    public $photo_caption;
     public $photo_des;
     public $photo_filename;
+    public $photo_altText;
     public $photo_type;
     public $photo_size;
 
@@ -109,7 +111,7 @@ class Photo extends DB_Object
      *
      * It will make three things
      * 1. Delete from Database
-     * 2. Delete from table of adimin
+     * 2. Delete from table of admin
      * 3. Delete file from server/directory
      */
     public function delete_photo()
