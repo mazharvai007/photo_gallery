@@ -59,6 +59,7 @@
                 <!-- /.row -->
 
                 <div class="row">
+                    <?php echo $message; ?>
                     <form method="post">
                         <div class="col-md-8">
                             <div class="form-group">
@@ -76,6 +77,9 @@
                             <div class="form-group">
                                 <label for="description">Description</label>
                                 <textarea name="description" id="description" cols="30" rows="10" class="form-control"><?php echo $photo->photo_des; ?></textarea>
+                            </div>
+                            <div class="form-group">
+                                <a href="#"><img src="<?php echo $photo->image_path(); ?>" alt="<?php echo $photo->photo_altText; ?>" class="img-responsive img-thumbnail"></a><br><br>
                             </div>
                         </div>
 
