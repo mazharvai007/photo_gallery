@@ -60,7 +60,7 @@ $users = User::find_all();
                         <?php foreach ($users as $user) : ?>
                             <tr>
                                 <th><?php echo $user->id; ?></th>
-                                <th><img src="<?php echo $photo->user_image; ?>" alt="" class="img-responsive img-thumbnail"></th>
+                                <th><img width="100" height="100" src="<?php echo $user->user_photo(); ?>" alt="" class="img-responsive img-thumbnail"></th>
                                 <th><?php echo $user->username; ?></th>
                                 <th><?php echo $user->first_name; ?></th>
                                 <th><?php echo $user->last_name; ?></th>

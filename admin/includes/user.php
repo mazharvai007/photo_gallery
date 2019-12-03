@@ -3,6 +3,22 @@
 //Inherit the class
 class User extends DB_Object
 {
+    protected static $db_table = "users";
+    protected static $db_table_fields = array('username', 'password', 'first_name', 'last_name', 'user_image');
+    public $id;
+    public $username;
+    public $password;
+    public $first_name;
+    public $last_name;
+    public $user_image;
+
+    public $upload_directory = "images";
+    public $image_placeholder = "http://lorempixel.com/400/200/";
+
+    public function user_photo()
+    {
+        return empty($this->user_image) ? $this->image_placeholder : $this->upload_directory.DS.$this->user_image;
+    }
 
     // Make the method to verify the user
     public static function verify_user($username, $password)
