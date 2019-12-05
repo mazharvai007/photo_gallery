@@ -35,6 +35,24 @@ class User extends DB_Object
         return !empty($the_result_array) ? array_shift($the_result_array) : false;
 
     }
+
+    /*
+     * Make delete method
+     *
+     * It will make three things
+     * 1. Delete from Database
+     * 2. Delete from table of admin
+     * 3. Delete file from server/directory
+     */
+    public function delete_user()
+    {
+        if ($this->delete()) {
+            $target_path = SITE_ROOT.DS.'admin'.DS.$this->user_photo();
+            return unlink($target_path) ? true : false;
+        } else {
+            return false;
+        }
+    }
 }
 
 // Instantiate the User Class

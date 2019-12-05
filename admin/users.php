@@ -61,7 +61,15 @@ $users = User::find_all();
                             <tr>
                                 <th><?php echo $user->id; ?></th>
                                 <th><img width="100" height="100" src="<?php echo $user->user_photo(); ?>" alt="" class="img-responsive img-thumbnail"></th>
-                                <th><?php echo $user->username; ?></th>
+                                <th>
+                                    <?php echo $user->username; ?>
+                                    <p></p>
+                                    <div class="btn-group">
+                                        <a href="#" class="btn btn-primary">View</a>
+                                        <a href="#" class="btn btn-info">Edit</a>
+                                        <a href="delete_user.php?id=<?php echo $user->id; ?>" class="btn btn-danger">Delete</a>
+                                    </div>
+                                </th>
                                 <th><?php echo $user->first_name; ?></th>
                                 <th><?php echo $user->last_name; ?></th>
                             </tr>
