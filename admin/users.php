@@ -74,8 +74,7 @@ $users = User::find_all();
                                     <?php echo $user->username; ?>
                                     <p></p>
                                     <div class="btn-group">
-                                        <a href="#" class="btn btn-primary">View</a>
-                                        <a href="#" class="btn btn-info">Edit</a>
+                                        <a href="edit_user.php?id=<?php echo $user->id; ?>" class="btn btn-primary">Edit</a>
                                         <a href="delete_user.php?id=<?php echo $user->id; ?>" class="btn btn-danger">Delete</a>
                                     </div>
                                 </th>
