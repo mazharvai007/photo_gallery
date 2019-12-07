@@ -44,6 +44,15 @@ $users = User::find_all();
 
         <div class="row">
             <div class="col-md-12">
+                <div class="user_adding_area">
+                    <a href="add_user.php" class="btn btn-primary">Add User</a>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
