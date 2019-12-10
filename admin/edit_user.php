@@ -20,6 +20,11 @@ if (empty($_GET['id'])) {
             $user->password = $_POST['password'];
             $user->first_name = $_POST['first_name'];
             $user->last_name = $_POST['last_name'];
+
+            if (empty($_FILES['user_image'])) {
+                $user->save();
+            }
+
             $user->set_file($_FILES['user_image']);
 
             if ($user->save()) {
@@ -89,7 +94,8 @@ if (empty($_GET['id'])) {
                             <label for="file_upload">User Photo</label>
                             <input type="file" id="file_upload" class="form-control" name="user_image">
                         </div>
-                        <button type="submit" name="update" class="btn btn-primary">Update</button>
+                        <a href="delete_user.php?id=<?php echo $user->id; ?>" class="btn btn-danger pull-left">Delete</a>
+                        <button type="submit" name="update" class="btn btn-primary pull-right">Update</button>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
