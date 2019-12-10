@@ -24,6 +24,7 @@
                     $photo->save();
                 } else {
                     $photo->set_file($_FILES['file_upload']);
+                    $photo->upload_photo();
 
                     if ($photo->save()) {
                         $message = "Photo uploaded successfully!";

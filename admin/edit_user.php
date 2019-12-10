@@ -23,14 +23,15 @@ if (empty($_GET['id'])) {
 
             if (empty($_FILES['user_image'])) {
                 $user->save();
-            }
-
-            $user->set_file($_FILES['user_image']);
-
-            if ($user->save()) {
-                $message = "User updated successfully!";
             } else {
-                $message = join("<br>", $user->errors);
+                $user->set_file($_FILES['user_image']);
+                $user->upload_photo();
+
+                if ($user->save()) {
+                    $message = "User updated successfully!";
+                } else {
+                    $message = join("<br>", $user->errors);
+                }
             }
         }
     }

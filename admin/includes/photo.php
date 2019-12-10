@@ -70,7 +70,7 @@ class Photo extends DB_Object
      * If photo id is available, then update the photos table.
      * If not, then insert data in the photos table of database
      */
-    public function save()
+    public function upload_photo()
     {
 
         if (!empty($this->errors)) {
@@ -92,10 +92,8 @@ class Photo extends DB_Object
             return false;
         } elseif (move_uploaded_file($this->tmp_path, $target_path)) {
             // If upload file and create then unset the temporary path
-            if ($this->create()) {
-                unset($this->tmp_path);
-                return true;
-            }
+            unset($this->tmp_path);
+            return true;
         } else {
             $this->errors[] = "The file directory probably does not have permission.";
             return false;
