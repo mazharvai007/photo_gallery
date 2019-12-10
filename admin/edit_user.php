@@ -16,8 +16,8 @@ if (empty($_GET['id'])) {
 
     if (isset($_POST['update'])) {
         if ($user) {
-//        $user->username = $_POST['username'];
-//        $user->password = $_POST['password'];
+            $user->username = $_POST['username'];
+            $user->password = $_POST['password'];
             $user->first_name = $_POST['first_name'];
             $user->last_name = $_POST['last_name'];
             $user->set_file($_FILES['user_image']);
@@ -68,28 +68,33 @@ if (empty($_GET['id'])) {
             <div class="row">
                 <?php echo $message; ?>
                 <form action="" method="post" enctype="multipart/form-data">
-                    <div class="col-md-4">
-<!--                        <div class="form-group">-->
-<!--                            <label for="username">Username</label>-->
-<!--                            <input type="text" class="form-control" id="username" name="username">-->
-<!--                        </div>-->
-<!--                        <div class="form-group">-->
-<!--                            <label for="password">Password</label>-->
-<!--                            <input type="password" class="form-control" id="password" name="password">-->
-<!--                        </div>-->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username" name="username" value="<?php echo $user->username; ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" value="<?php echo $user->password; ?>">
+                        </div>
                         <div class="form-group">
                             <label for="first_name">First Name</label>
-                            <input type="text" class="form-control" id="first_name" name="first_name">
+                            <input type="text" class="form-control" id="first_name" name="first_name" value="<?php echo $user->first_name; ?>">
                         </div>
                         <div class="form-group">
                             <label for="last_name">Last Name</label>
-                            <input type="text" class="form-control" id="last_name" name="last_name">
+                            <input type="text" class="form-control" id="last_name" name="last_name" value="<?php echo $user->last_name; ?>">
                         </div>
                         <div class="form-group">
                             <label for="file_upload">User Photo</label>
                             <input type="file" id="file_upload" class="form-control" name="user_image">
                         </div>
                         <button type="submit" name="update" class="btn btn-primary">Update</button>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <img src="<?php echo $user->user_photo(); ?>" alt="" class="img-responsive img-thumbnail" width="200" height="200">
+                        </div>
                     </div>
                 </form>
             </div>
