@@ -6,6 +6,8 @@
         redirect("login.php");
     }
 
+    $message = "";
+
     if (empty($_GET['id'])) {
         redirect("photos.php");
     } else {
@@ -15,15 +17,24 @@
             if ($photo) {
                 $photo->photo_title = $_POST['title'];
                 $photo->photo_caption = $_POST['caption'];
-                $photo->photo_des = $_POST['description'];
                 $photo->photo_altText = $_POST['altText'];
+                $photo->photo_des = $_POST['description'];
 
-                $photo->save();
+                if (empty($_FILES['file_upload'])) {
+                    $photo->save();
+                } else {
+                    $photo->set_file($_FILES['file_upload']);
+                    $photo->upload_photo();
 
+                    if ($photo->save()) {
+                        $message = "Photo uploaded successfully!";
+                    } else {
+                        $message = join("<br>", $photo->errors);
+                    }
+                }
             }
         }
     }
-
 
 ?>
 
@@ -60,7 +71,7 @@
 
                 <div class="row">
                     <?php echo $message; ?>
-                    <form method="post">
+                    <form action="" method="post" enctype="multipart/form-data">
                         <div class="col-md-8">
                             <div class="form-group">
                                 <label for="title">Title</label>
@@ -80,6 +91,7 @@
                             </div>
                             <div class="form-group">
                                 <a href="#"><img src="<?php echo $photo->image_path(); ?>" alt="<?php echo $photo->photo_altText; ?>" class="img-responsive img-thumbnail"></a><br><br>
+                                <input type="file" id="file_upload" class="form-control" name="file_upload">
                             </div>
                         </div>
 
