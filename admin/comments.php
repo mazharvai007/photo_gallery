@@ -1,4 +1,14 @@
-<?php include("includes/header.php"); ?>
+<?php
+include("includes/header.php");
+
+// If user is not signed in, the redirect to login page
+if (!$session->is_signed_in()) {
+    redirect("login.php");
+}
+
+// Find all comments
+$comments = Comment::find_all();
+?>
 
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -31,6 +41,38 @@
                     </div>
                 </div>
                 <!-- /.row -->
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Autor</th>
+                                    <th>Comments</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                <?php foreach ($comments as $comment) : ?>
+                                    <tr>
+                                        <td><?php echo $comment->id; ?></td>
+                                        <td>
+                                            <?php echo $comment->author; ?>
+                                            <p></p>
+                                            <div class="btn-group">
+                                                <a href="delete_comment.php?id=<?php echo $comment->id; ?>" class="btn btn-danger">Delete</a>
+                                            </div>
+                                        </td>
+                                        <td><?php echo $comment->comment_body; ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
 
             </div>
             <!-- /.container-fluid -->

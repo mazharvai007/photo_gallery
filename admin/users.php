@@ -68,18 +68,18 @@ $users = User::find_all();
                         <tbody>
                         <?php foreach ($users as $user) : ?>
                             <tr>
-                                <th><?php echo $user->id; ?></th>
-                                <th><img width="100" height="100" src="<?php echo $user->user_photo(); ?>" alt="" class="img-responsive img-thumbnail"></th>
-                                <th>
+                                <td><?php echo $user->id; ?></td>
+                                <td><img width="100" height="100" src="<?php echo $user->user_photo(); ?>" alt="" class="img-responsive img-thumbnail"></td>
+                                <td>
                                     <?php echo $user->username; ?>
                                     <p></p>
                                     <div class="btn-group">
                                         <a href="edit_user.php?id=<?php echo $user->id; ?>" class="btn btn-primary">Edit</a>
                                         <a href="delete_user.php?id=<?php echo $user->id; ?>" class="btn btn-danger">Delete</a>
                                     </div>
-                                </th>
-                                <th><?php echo $user->first_name; ?></th>
-                                <th><?php echo $user->last_name; ?></th>
+                                </td>
+                                <td><?php echo $user->first_name; ?></td>
+                                <td><?php echo $user->last_name; ?></td>
                             </tr>
                         <?php endforeach; ?>
                         </tbody>
