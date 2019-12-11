@@ -3,12 +3,29 @@ require_once ("admin/includes/init.php");
 
 if (empty($_GET['id'])) {
     redirect("index.php");
-} else {
-    $photo = Photo::find_by_id($_GET['id']);
 }
+
+$photo = Photo::find_by_id($_GET['id']);
+
+$message = "";
 if (isset($_POST['submit'])) {
-    echo "Hello";
+    $author = trim($_POST['author']);
+    $comment_body = trim($_POST['comment_body']);
+
+    $create_comment = Comment::create_comment($photo->id, $author, $comment_body);
+
+    if ($create_comment && $create_comment->save()) {
+        redirect("photo.php?id={$photo->id}");
+    } else {
+        $message = "The comment will not save.";
+    }
+} else {
+    $author = "";
+    $comment_body = "";
 }
+
+$find_comment = Comment::find_the_comment($photo->id);
+
 ?>
 
 <!DOCTYPE html>
@@ -116,6 +133,7 @@ if (isset($_POST['submit'])) {
 
                 <!-- Comments Form -->
                 <div class="well">
+                    <?php echo $message; ?>
                     <h4>Leave a Comment:</h4>
                     <form action="photo.php" role="form" method="post" enctype="multipart/form-data">
                         <div class="form-group">
