@@ -6,8 +6,11 @@ if (!$session->is_signed_in()) {
     redirect("login.php");
 }
 
-// Find all comments
-$comments = Comment::find_all();
+if (empty($_GET['id'])) {
+    redirect("photos.php");
+}
+
+$comments = Comment::find_the_comment($_GET['id']);
 ?>
 
         <!-- Navigation -->
@@ -62,7 +65,7 @@ $comments = Comment::find_all();
                                             <?php echo $comment->author; ?>
                                             <p></p>
                                             <div class="btn-group">
-                                                <a href="delete_comment.php?id=<?php echo $comment->id; ?>" class="btn btn-danger">Delete</a>
+                                                <a href="delete_comment_photo.php?id=<?php echo $comment->id; ?>" class="btn btn-danger">Delete</a>
                                             </div>
                                         </td>
                                         <td><?php echo $comment->comment_body; ?></td>

@@ -57,6 +57,7 @@
                                         <th>AltText</th>
                                         <th>Type</th>
                                         <th>Size</th>
+                                        <th>Comments</th>
                                     </tr>
                                 </thead>
 
@@ -67,8 +68,8 @@
                                         <td>
                                             <img src="<?php echo $photo->image_path(); ?>" alt="" class="img-responsive img-thumbnail">
                                             <p></p>
-                                            <div class="pictures_link btn-group">
-                                                <a href="#" class="btn btn-primary">View</a>
+                                            <div class="action_links btn-group">
+                                                <a href="../photo.php?id=<?php echo $photo->id; ?>" class="btn btn-primary">View</a>
                                                 <a href="edit_photo.php?id=<?php echo $photo->id; ?>" class="btn btn-info">Edit</a>
                                                 <a href="delete_photo.php?id=<?php echo $photo->id; ?>" class="btn btn-danger">Delete</a>
                                             </div>
@@ -80,6 +81,14 @@
                                         <td><?php echo $photo->photo_altText; ?></td>
                                         <td><?php echo $photo->photo_type; ?></td>
                                         <td><?php echo $photo->photo_size; ?></td>
+                                        <td>
+                                            <a href="comments_photo.php?id=<?php echo $photo->id; ?>" class="btn btn-primary">
+                                            <?php
+                                                $comments = Comment::find_the_comment($photo->id);
+                                                echo count($comments);
+                                            ?>
+                                            </a>
+                                        </td>
                                     </tr>
                                     <?php endforeach; ?>
                                 </tbody>

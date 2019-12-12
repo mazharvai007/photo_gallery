@@ -14,6 +14,7 @@
 
     if ($user) {
         $user->delete_user();
+        $session->message("The comment with {$user->username} has been deleted");
         redirect("users.php");
     } else {
         redirect("users.php");

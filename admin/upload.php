@@ -53,7 +53,7 @@
                 <!-- /.row -->
 
                 <div class="row">
-                    <div class="col-md-6 col-md-offset-3">
+                    <div class="col-md-6">
                         <?php echo $message; ?>
                         <form action="upload.php" method="post" enctype="multipart/form-data">
                             <div class="form-group">
