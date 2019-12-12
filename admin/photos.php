@@ -82,12 +82,12 @@
                                         <td><?php echo $photo->photo_type; ?></td>
                                         <td><?php echo $photo->photo_size; ?></td>
                                         <td>
+                                            <a href="comments_photo.php?id=<?php echo $photo->id; ?>" class="btn btn-primary">
                                             <?php
                                                 $comments = Comment::find_the_comment($photo->id);
                                                 echo count($comments);
                                             ?>
-                                            <br>
-                                            <a href="comments_photo.php?id=<?php echo $photo->id; ?>" class="btn btn-primary">View</a>
+                                            </a>
                                         </td>
                                     </tr>
                                     <?php endforeach; ?>

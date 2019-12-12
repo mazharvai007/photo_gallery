@@ -7,7 +7,7 @@
     }
 
     if (empty($_GET['id'])) {
-        redirect("comments.php");
+        redirect("comments_photo.php");
     }
 
     $comment = Comment::find_by_id($_GET['id']);
@@ -15,8 +15,8 @@
     if ($comment) {
         $comment->delete();
         $session->message("The comment with {$comment->id} has been deleted");
-        redirect("comments.php");
+        redirect("comments_photo.php?id={$comment->photo_id}");
     } else {
-        redirect("comments.php");
+        redirect("comments_photo.php?id={$comment->photo_id}");
     }
 ?>

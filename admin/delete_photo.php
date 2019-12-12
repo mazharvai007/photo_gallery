@@ -14,6 +14,7 @@
 
     if ($photo) {
         $photo->delete_photo();
+        $session->message("The comment with {$photo->id} has been deleted");
         redirect("photos.php");
     } else {
         redirect("photos.php");
