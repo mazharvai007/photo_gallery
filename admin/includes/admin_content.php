@@ -109,5 +109,11 @@
         </div>
     </div> <!--First Row-->
 
+    <div class="row">
+        <div class="col-md-12">
+            <div id="piechart" style="width: 900px; height: 500px;"></div>
+        </div>
+    </div>
+
 </div>
 <!-- /.container-fluid -->
