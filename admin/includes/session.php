@@ -6,6 +6,7 @@ class Session
     private $signed_in;
     public $user_id;
     public $message;
+    public $count;
 
     // Make construct method
     function __construct()
@@ -13,6 +14,17 @@ class Session
         session_start();
         $this->check_the_login();
         $this->check_message();
+        $this->visitor_count();
+    }
+
+    // Visitor Count
+    public function visitor_count()
+    {
+        if (isset($_SESSION['count'])) {
+            return $this->count = $_SESSION['count']++;
+        } else {
+            return $_SESSION['count'] = 1;
+        }
     }
 
     // Make message method
