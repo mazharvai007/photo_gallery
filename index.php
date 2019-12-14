@@ -7,8 +7,8 @@
                     <?php foreach ($photos as $photo) : ?>
                         <div class="col-md-3 col-xs-6">
                             <div class="item">
-                                <a href="#">
-                                    <img src="admin/<?php echo $photo->image_path(); ?>" alt="" class="thumbnail" style="width:100%;height:150px;">
+                                <a href="photo.php?id=<?php echo $photo->id; ?>">
+                                    <img src="admin/<?php echo $photo->image_path(); ?>" alt="" class="thumbnail img-responsive" style="width:100%;height:150px;">
                                 </a>
                             </div>
                         </div>
