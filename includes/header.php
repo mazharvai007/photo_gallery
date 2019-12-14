@@ -1,3 +1,10 @@
+<?php
+require_once ("admin/includes/init.php");
+
+$photos = Photo::find_all();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

@@ -2,27 +2,25 @@
 
 
         <div class="row">
-
-            <!-- Blog Entries Column -->
-            <div class="col-md-8">
-
-    
-            
-          
-         
-
+            <div class="col-md-12">
+                <div class="row">
+                    <?php foreach ($photos as $photo) : ?>
+                        <div class="col-md-3 col-xs-6">
+                            <div class="item">
+                                <a href="#">
+                                    <img src="admin/<?php echo $photo->image_path(); ?>" alt="" class="thumbnail" style="width:100%;height:150px;">
+                                </a>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
             </div>
-
-
 
 
             <!-- Blog Sidebar Widgets Column -->
-            <div class="col-md-4">
-
-            
-                 <?php include("includes/sidebar.php"); ?>
-
-            </div>
+<!--            <div class="col-md-4">-->
+<!--                 --><?php //include("includes/sidebar.php"); ?>
+<!--            </div>-->
 
         </div>
         <!-- /.row -->
