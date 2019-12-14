@@ -1,3 +1,10 @@
+<?php
+require_once ("admin/includes/init.php");
+
+$photos = Photo::find_all();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +16,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Blog Home - Start Bootstrap Template</title>
+    <title>Photo Gallery</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
