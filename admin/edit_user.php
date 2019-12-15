@@ -40,6 +40,46 @@ if (empty($_GET['id'])) {
 
 ?>
 
+    <div class="modal fade" id="photo-library">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Gallery System Library</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-9">
+                        <div class="thumbnails row">
+
+                            <!-- PHP LOOP HERE CODE HERE-->
+
+                            <div class="col-xs-2">
+                                <a role="checkbox" aria-checked="false" tabindex="0" id="" href="#" class="thumbnail">
+                                    <img class="modal_thumbnails img-responsive" src="<!-- PHP LOOP HERE CODE HERE-->" data="<!-- PHP LOOP HERE CODE HERE-->">
+                                </a>
+                                <div class="photo-id hidden"></div>
+                            </div>
+
+                            <!-- PHP LOOP HERE CODE HERE-->
+
+                        </div>
+                    </div><!--col-md-9 -->
+
+                    <div class="col-md-3">
+                        <div id="modal_sidebar"></div>
+                    </div>
+
+                </div><!--Modal Body-->
+                <div class="modal-footer">
+                    <div class="row">
+                        <!--Closes Modal-->
+                        <button id="set_user_image" type="button" class="btn btn-primary" disabled="true" data-dismiss="modal">Apply Selection</button>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 
@@ -72,9 +112,9 @@ if (empty($_GET['id'])) {
             <!-- /.row -->
 
             <div class="row">
-                <?php echo $message; ?>
-                <form action="" method="post" enctype="multipart/form-data">
-                    <div class="col-md-6">
+                <div class="col-md-6">
+                    <?php echo $message; ?>
+                    <form action="" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="username">Username</label>
                             <input type="text" class="form-control" id="username" name="username" value="<?php echo $user->username; ?>">
@@ -97,13 +137,15 @@ if (empty($_GET['id'])) {
                         </div>
                         <a href="delete_user.php?id=<?php echo $user->id; ?>" class="btn btn-danger pull-left">Delete</a>
                         <button type="submit" name="update" class="btn btn-primary pull-right">Update</button>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <a href="#" data-toggle="modal" data-target="#photo-library">
                             <img src="<?php echo $user->user_photo(); ?>" alt="" class="img-responsive img-thumbnail" width="200" height="200">
-                        </div>
+                        </a>
                     </div>
-                </form>
+                </div>
             </div>
 
         </div>
