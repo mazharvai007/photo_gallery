@@ -35,7 +35,10 @@ $(document).ready(function () {
             type: "POST",
             success: function (data) {
                 if (!data.error) {
-                    location.reload(true);
+
+                    $(".user-image-box a img").prop("src", data);
+
+                    // location.reload(true);
                 }
             }
         });

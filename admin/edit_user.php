@@ -99,7 +99,7 @@ if (empty($_GET['id'])) {
                         <button type="submit" name="update" class="btn btn-primary pull-right">Update</button>
                     </form>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 user-image-box">
                     <div class="form-group">
                         <a href="#" data-toggle="modal" data-target="#photo-library">
                             <img src="<?php echo $user->user_photo(); ?>" alt="" class="img-responsive img-thumbnail" width="200" height="200">
