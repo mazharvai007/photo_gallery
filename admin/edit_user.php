@@ -95,7 +95,7 @@ if (empty($_GET['id'])) {
                             <label for="file_upload">User Photo</label>
                             <input type="file" id="file_upload" class="form-control" name="user_image">
                         </div>
-                        <a href="delete_user.php?id=<?php echo $user->id; ?>" class="btn btn-danger pull-left">Delete</a>
+                        <a id="user-id" href="delete_user.php?id=<?php echo $user->id; ?>" class="btn btn-danger pull-left">Delete</a>
                         <button type="submit" name="update" class="btn btn-primary pull-right">Update</button>
                     </form>
                 </div>
