@@ -126,6 +126,15 @@ class User extends DB_Object
             return false;
         }
     }
+
+    // User image save using AJAX
+    public function ajax_save_user_image($user_image, $user_id)
+    {
+        $this->user_image = $user_image;
+        $this->id = $user_id;
+
+        $this->save();
+    }
 }
 
 // Instantiate the User Class
