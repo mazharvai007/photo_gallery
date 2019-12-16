@@ -25,6 +25,22 @@ $(document).ready(function () {
 
     });
 
+    $("#set_user_image").click(function () {
+        $.ajax({
+            url: "includes/ajax.php",
+            data: {
+                image_name: image_name,
+                user_id: user_id
+            },
+            type: "POST",
+            success: function (data) {
+                if (!data.error) {
+                    alert(data);
+                }
+            }
+        });
+    });
+
     tinymce.init({selector:'textarea'});
 
 });
