@@ -1,5 +1,5 @@
 
-$(document).ready(function () {
+$(document).ready(function ($) {
 
     var user_href;
     var user_href_splitted;
@@ -7,6 +7,7 @@ $(document).ready(function () {
     var image_src;
     var image_src_splitted;
     var image_name;
+    var photo_id;
 
     $(".modal_thumbnails").click(function () {
 
@@ -23,6 +24,21 @@ $(document).ready(function () {
         image_src_splitted = image_src.split("/");
         image_name = image_src_splitted[image_src_splitted.length - 1];
 
+        // Get image id and show info to sidebar
+        photo_id = $(this).attr("data");
+        $.ajax({
+           url: "includes/ajax.php",
+           data: {
+               photo_id: photo_id
+           },
+            type: "POST",
+            success: function (data) {
+                if (!data.error) {
+                    $("#modal_sidebar").html(data);
+                }
+            }
+        });
+
     });
 
     $("#set_user_image").click(function () {
@@ -35,10 +51,7 @@ $(document).ready(function () {
             type: "POST",
             success: function (data) {
                 if (!data.error) {
-
                     $(".user-image-box a img").prop("src", data);
-
-                    // location.reload(true);
                 }
             }
         });
