@@ -222,3 +222,15 @@ ul.alert-dropdown {
 .panel-yellow a:hover {
     color: #df8a13;
 }
+
+/*
+==========================
+Custom CSS for login page
+==========================
+*/
+
+.login-area {
+    background-color: white;
+    border-radius: 5px;
+    padding: 15px;
+}
