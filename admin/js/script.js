@@ -1,6 +1,23 @@
 
 $(document).ready(function ($) {
 
+    /*
+    ================
+    Edit photo sidebar dropdown
+    ================
+    */
+
+    $(".info-box-header").click(function () {
+        $(".inside").slideToggle("fast");
+        $("#toggle").toggleClass("glyphicon-menu-down glyphicon , glyphicon-menu-up glyphicon");
+    });
+
+    /*
+    ===============================================
+    Media library on modal for changing user image
+    ===============================================
+    */
+
     var user_href;
     var user_href_splitted;
     var user_id;
@@ -56,6 +73,13 @@ $(document).ready(function ($) {
             }
         });
     });
+
+
+    /*
+    =========================
+    Installing tinyMCE editor
+    =========================
+    */
 
     tinymce.init({selector:'textarea'});
 
