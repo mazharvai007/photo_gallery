@@ -8,6 +8,7 @@
 
     $message = "";
     if (isset($_FILES['file'])) {
+        $photo->user_id = $_SESSION['id'];
         $photo->photo_title = $_POST['title'];
         $photo->photo_des = $_POST['description'];
         $photo->set_file($_FILES['file']);

@@ -144,6 +144,17 @@ class User extends DB_Object
         return $this->image_placeholder;
 
     }
+
+    /*
+     =====================
+     Make Photo method
+     =====================
+    */
+
+    public function photos()
+    {
+        return Photo::find_by_query("SELECT * FROM photos WHERE user_id= " . $this->id );
+    }
 }
 
 // Instantiate the User Class

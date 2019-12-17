@@ -7,7 +7,8 @@
     }
 
     // Find all photos
-    $photos = Photo::find_all();
+//    $photos = Photo::find_all();
+    $photos = User::find_by_id($_SESSION['id'])->photos();
 ?>
 
         <!-- Navigation -->
@@ -67,7 +68,7 @@
                                     <tr>
                                         <td><?php echo $photo->id; ?></td>
                                         <td>
-                                            <img src="<?php echo $photo->image_path(); ?>" alt="" class="img-responsive img-thumbnail">
+                                            <img src="<?php echo $photo->image_path(); ?>" alt="" class="img-responsive img-thumbnail" width="200">
                                             <p></p>
                                             <div class="action_links btn-group">
                                                 <a href="../photo.php?id=<?php echo $photo->id; ?>" class="btn btn-primary">View</a>
