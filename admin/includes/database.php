@@ -7,10 +7,11 @@ class Database
 {
 
     public $connect;
+    public $db;
 
     function __construct()
     {
-        $this->open_db_connect();
+        $this->db = $this->open_db_connect();
     }
 
     // Connect with database using the method
@@ -23,13 +24,15 @@ class Database
         if ($this->connect->connect_errno) {
             die("Database connection is failed " . $this->connect->connect_error);
         }
+
+        return $this->connect;
     }
 
     // Make query method
     public function query($sql)
     {
         // Improve DB Query
-        $result = mysqli_query($this->connect, $sql);
+        $result = $this->db->query($sql);
         $this->confirm_query($result);
         return $result;
     }
@@ -39,7 +42,7 @@ class Database
     {
         if (!$result) {
             // Improve Query
-            die("Query Failed! " . $this->connect->error);
+            die("Query Failed! " . $this->db->error);
         }
     }
 
@@ -47,14 +50,13 @@ class Database
     public function escape_string($string)
     {
         // Improve Query
-        $escaped_string = $this->connect->real_escape_string($string);
-        return $escaped_string;
+        return $this->db->real_escape_string($string);
     }
 
     // Make Insert ID method
     public function the_insert_id()
     {
-        return mysqli_insert_id($this->connect);
+        return $this->db->insert_id;
     }
 
 }

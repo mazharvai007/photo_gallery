@@ -14,7 +14,7 @@
 
     if ($comment) {
         $comment->delete();
-        $session->message("The comment with {$comment->id} has been deleted");
+        $session->message("The comment id: {$comment->id} has been deleted!");
         redirect("comments_photo.php?id={$comment->photo_id}");
     } else {
         redirect("comments_photo.php?id={$comment->photo_id}");

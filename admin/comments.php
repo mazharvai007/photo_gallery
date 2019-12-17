@@ -38,6 +38,7 @@ $comments = Comment::find_all();
                                 <i class="fa fa-file"></i> Comments
                             </li>
                         </ol>
+                        <p class="bg-success"><?php echo $session->message; ?></p>
                     </div>
                 </div>
                 <!-- /.row -->

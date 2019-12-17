@@ -9,7 +9,6 @@
 
     <!-- TinyMCE Editor Integration -->
   <script src="//cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-  <script>tinymce.init({selector:'textarea'});</script>
 
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
@@ -38,6 +37,9 @@
           chart.draw(data, options);
       }
   </script>
+
+  <script src="js/dropzone.js"></script>
+  <script src="js/script.js"></script>
 
 </body>
 

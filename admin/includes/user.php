@@ -56,7 +56,7 @@ class User extends DB_Object
      * 2. Delete from table of admin
      * 3. Delete file from server/directory
      */
-    public function delete_user()
+    public function delete_user_photo()
     {
         if ($this->delete()) {
             $target_path = SITE_ROOT.DS.'admin'.DS.$this->user_photo();
@@ -125,6 +125,35 @@ class User extends DB_Object
             $this->errors[] = "The file directory probably does not have permission.";
             return false;
         }
+    }
+
+    // User image save using AJAX
+    public function ajax_save_user_image($user_image, $user_id)
+    {
+        global $database;
+
+        $user_image = $database->escape_string($user_image);
+        $user_id = $database->escape_string($user_id);
+
+        $this->user_image = $user_image;
+        $this->id = $user_id;
+
+        $update_image_sql_query = "UPDATE " . self::$db_table . " SET user_image = '{$this->user_image}' WHERE id = {$this->id} ";
+        $update_image = $database->query($update_image_sql_query);
+
+        return $this->image_placeholder;
+
+    }
+
+    /*
+     =====================
+     Make Photo method
+     =====================
+    */
+
+    public function photos()
+    {
+        return Photo::find_by_query("SELECT * FROM photos WHERE user_id= " . $this->id );
     }
 }
 

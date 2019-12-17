@@ -7,13 +7,15 @@
     }
 
     $message = "";
-    if (isset($_POST['submit'])) {
+    if (isset($_FILES['file'])) {
+        $photo->user_id = $_SESSION['id'];
         $photo->photo_title = $_POST['title'];
         $photo->photo_des = $_POST['description'];
-        $photo->set_file($_FILES['file_upload']);
+        $photo->set_file($_FILES['file']);
+        $photo->upload_photo();
 
         if ($photo->save()) {
-            $message = "Photo uploaded successfully!";
+            $message = "<p class='alert-success'>Photo has been uploaded!</p>";
         } else {
             $message = join("<br>", $photo->errors);
         }
@@ -63,13 +65,19 @@
                                 <textarea name="description" id="description" cols="30" rows="10" class="form-control" placeholder="Description"></textarea>
                             </div>
                             <div class="form-group">
-                                <input type="file" id="file_upload" class="form-control" name="file_upload">
+                                <input type="file" class="form-control" name="file" multiple>
                             </div>
                             <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
+                    <div class="col-md-6">
+                        <form action="upload.php" class="dropzone">
+                            <div class="fallback">
+                                <input name="file" type="file" multiple />
+                            </div>
+                        </form>
+                    </div>
                 </div>
-
             </div>
             <!-- /.container-fluid -->
 

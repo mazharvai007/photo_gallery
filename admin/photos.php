@@ -7,7 +7,8 @@
     }
 
     // Find all photos
-    $photos = Photo::find_all();
+//    $photos = Photo::find_all();
+    $photos = User::find_by_id($_SESSION['id'])->photos();
 ?>
 
         <!-- Navigation -->
@@ -38,6 +39,7 @@
                                 <i class="fa fa-file"></i> Photos
                             </li>
                         </ol>
+                        <p class="bg-success"><?php echo $session->message; ?></p>
                     </div>
                 </div>
                 <!-- /.row -->
@@ -66,12 +68,12 @@
                                     <tr>
                                         <td><?php echo $photo->id; ?></td>
                                         <td>
-                                            <img src="<?php echo $photo->image_path(); ?>" alt="" class="img-responsive img-thumbnail">
+                                            <img src="<?php echo $photo->image_path(); ?>" alt="" class="img-responsive img-thumbnail" width="200">
                                             <p></p>
                                             <div class="action_links btn-group">
                                                 <a href="../photo.php?id=<?php echo $photo->id; ?>" class="btn btn-primary">View</a>
                                                 <a href="edit_photo.php?id=<?php echo $photo->id; ?>" class="btn btn-info">Edit</a>
-                                                <a href="delete_photo.php?id=<?php echo $photo->id; ?>" class="btn btn-danger">Delete</a>
+                                                <a href="delete_photo.php?id=<?php echo $photo->id; ?>" class="btn btn-danger confirm_photo_delete">Delete</a>
                                             </div>
                                         </td>
                                         <td><?php echo $photo->photo_title; ?></td>

@@ -1,5 +1,6 @@
 <?php
 include("includes/header.php");
+include("includes/photo_library_modal.php");
 
 // If user is not signed in, the redirect to login page
 if (!$session->is_signed_in()) {
@@ -28,7 +29,7 @@ if (empty($_GET['id'])) {
                 $user->upload_photo();
 
                 if ($user->save()) {
-                    $message = "User updated successfully!";
+                    $message = "<p class='alert-success'>The user has been updated!</p>";
                 } else {
                     $message = join("<br>", $user->errors);
                 }
@@ -39,7 +40,6 @@ if (empty($_GET['id'])) {
 
 
 ?>
-
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 
@@ -72,9 +72,9 @@ if (empty($_GET['id'])) {
             <!-- /.row -->
 
             <div class="row">
-                <?php echo $message; ?>
-                <form action="" method="post" enctype="multipart/form-data">
-                    <div class="col-md-6">
+                <div class="col-md-6">
+                    <?php echo $message; ?>
+                    <form action="" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="username">Username</label>
                             <input type="text" class="form-control" id="username" name="username" value="<?php echo $user->username; ?>">
@@ -95,15 +95,17 @@ if (empty($_GET['id'])) {
                             <label for="file_upload">User Photo</label>
                             <input type="file" id="file_upload" class="form-control" name="user_image">
                         </div>
-                        <a href="delete_user.php?id=<?php echo $user->id; ?>" class="btn btn-danger pull-left">Delete</a>
+                        <a id="user-id" href="delete_user.php?id=<?php echo $user->id; ?>" class="btn btn-danger pull-left">Delete</a>
                         <button type="submit" name="update" class="btn btn-primary pull-right">Update</button>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
+                    </form>
+                </div>
+                <div class="col-md-6 user-image-box">
+                    <div class="form-group">
+                        <a href="#" data-toggle="modal" data-target="#photo-library">
                             <img src="<?php echo $user->user_photo(); ?>" alt="" class="img-responsive img-thumbnail" width="200" height="200">
-                        </div>
+                        </a>
                     </div>
-                </form>
+                </div>
             </div>
 
         </div>

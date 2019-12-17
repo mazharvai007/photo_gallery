@@ -41,14 +41,14 @@ $find_comments = Comment::find_the_comment($photo->id);
                 <h1><?php echo $photo->photo_title; ?></h1>
 
                 <!-- Author -->
-                <p class="lead">
-                    by <a href="#"><?php echo $user->first_name; ?></a>
-                </p>
-
-                <hr>
+<!--                <p class="lead">-->
+<!--                    by <a href="#">--><?php //echo $user->first_name; ?><!--</a>-->
+<!--                </p>-->
+<!---->
+<!--                <hr>-->
 
                 <!-- Date/Time -->
-                <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
+<!--                <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>-->
 
                 <hr>
 

@@ -4,7 +4,7 @@
 class Photo extends DB_Object
 {
     protected static $db_table = "photos";
-    protected static $db_table_fields = array('photo_title', 'photo_caption', 'photo_des', 'photo_filename', 'photo_altText', 'photo_type', 'photo_size');
+    protected static $db_table_fields = array('photo_title', 'photo_caption', 'photo_des', 'photo_filename', 'photo_altText', 'photo_type', 'photo_size', 'user_id');
     public $id;
     public $photo_title;
     public $photo_caption;
@@ -13,6 +13,7 @@ class Photo extends DB_Object
     public $photo_altText;
     public $photo_type;
     public $photo_size;
+    public $user_id;
 
     public $tmp_path;
     public $upload_directory = "images";
@@ -116,6 +117,19 @@ class Photo extends DB_Object
         } else {
             return false;
         }
+    }
+
+    // Display photo information in the photo library sidebar
+    public static function display_sidebar_data($photo_id)
+    {
+        $photo = Photo::find_by_id($photo_id);
+
+        $output = "<a class='thumbnail' href='#'><img src='{$photo->image_path()}' alt='{$photo->photo_title}'></a>";
+        $output .= "<p><strong>File Name:</strong> {$photo->photo_filename}</p>";
+        $output .= "<p><strong>Type:</strong> {$photo->photo_type}</p>";
+        $output .= "<p><strong>Size:</strong> {$photo->photo_size}</p>";
+
+        echo $output;
     }
 
 }
