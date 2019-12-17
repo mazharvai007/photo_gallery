@@ -14,7 +14,7 @@
         $photo->upload_photo();
 
         if ($photo->save()) {
-            $message = "Photo uploaded successfully!";
+            $message = "<p class='alert-success'>Photo has been uploaded!</p>";
         } else {
             $message = join("<br>", $photo->errors);
         }

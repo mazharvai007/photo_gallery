@@ -38,6 +38,7 @@
                                 <i class="fa fa-file"></i> Photos
                             </li>
                         </ol>
+                        <p class="bg-success"><?php echo $session->message; ?></p>
                     </div>
                 </div>
                 <!-- /.row -->

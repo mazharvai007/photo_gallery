@@ -17,7 +17,7 @@ if (isset($_POST['create'])) {
         $user->upload_photo();
 
         if ($user->save()) {
-            $message = "<p class='alert-success'>User added successfully!</p>";
+            $message = "<p class='alert-success'>User has been added!</p>";
         } else {
             $message = join("<br>", $user->errors);
         }

@@ -38,6 +38,7 @@ $users = User::find_all();
                         <i class="fa fa-file"></i> Users
                     </li>
                 </ol>
+                <p class="bg-success"><?php echo $session->message; ?></p>
             </div>
         </div>
         <!-- /.row -->

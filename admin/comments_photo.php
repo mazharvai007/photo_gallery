@@ -41,6 +41,7 @@ $comments = Comment::find_the_comment($_GET['id']);
                                 <i class="fa fa-file"></i> Comments
                             </li>
                         </ol>
+                        <p class="bg-success"><?php echo $session->message; ?></p>
                     </div>
                 </div>
                 <!-- /.row -->
