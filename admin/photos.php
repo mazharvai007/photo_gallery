@@ -72,7 +72,7 @@
                                             <div class="action_links btn-group">
                                                 <a href="../photo.php?id=<?php echo $photo->id; ?>" class="btn btn-primary">View</a>
                                                 <a href="edit_photo.php?id=<?php echo $photo->id; ?>" class="btn btn-info">Edit</a>
-                                                <a href="delete_photo.php?id=<?php echo $photo->id; ?>" class="btn btn-danger">Delete</a>
+                                                <a href="delete_photo.php?id=<?php echo $photo->id; ?>" class="btn btn-danger confirm_photo_delete">Delete</a>
                                             </div>
                                         </td>
                                         <td><?php echo $photo->photo_title; ?></td>

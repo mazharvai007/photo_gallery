@@ -2,6 +2,16 @@
 $(document).ready(function ($) {
 
     /*
+    =====================
+    Confirm Photo delete
+    =====================
+    */
+
+    $(".confirm_photo_delete").click(function () {
+        return confirm("Are you sure to delete this item?");
+    });
+
+    /*
     ================
     Edit photo sidebar dropdown
     ================
@@ -11,6 +21,7 @@ $(document).ready(function ($) {
         $(".inside").slideToggle("fast");
         $("#toggle").toggleClass("glyphicon-menu-down glyphicon , glyphicon-menu-up glyphicon");
     });
+
 
     /*
     ===============================================
