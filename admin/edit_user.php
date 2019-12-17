@@ -29,7 +29,7 @@ if (empty($_GET['id'])) {
                 $user->upload_photo();
 
                 if ($user->save()) {
-                    $message = "User updated successfully!";
+                    $message = "<p class='alert-success'>The user has been updated!</p>";
                 } else {
                     $message = join("<br>", $user->errors);
                 }

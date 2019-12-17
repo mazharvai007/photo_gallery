@@ -56,7 +56,7 @@ class User extends DB_Object
      * 2. Delete from table of admin
      * 3. Delete file from server/directory
      */
-    public function delete_user()
+    public function delete_user_photo()
     {
         if ($this->delete()) {
             $target_path = SITE_ROOT.DS.'admin'.DS.$this->user_photo();

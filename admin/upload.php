@@ -11,6 +11,7 @@
         $photo->photo_title = $_POST['title'];
         $photo->photo_des = $_POST['description'];
         $photo->set_file($_FILES['file_upload']);
+        $photo->upload_photo();
 
         if ($photo->save()) {
             $message = "Photo uploaded successfully!";

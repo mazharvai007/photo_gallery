@@ -14,9 +14,10 @@ if (isset($_POST['create'])) {
         $user->first_name = $_POST['first_name'];
         $user->last_name = $_POST['last_name'];
         $user->set_file($_FILES['user_image']);
+        $user->upload_photo();
 
         if ($user->save()) {
-            $message = "User added successfully!";
+            $message = "<p class='alert-success'>User added successfully!</p>";
         } else {
             $message = join("<br>", $user->errors);
         }
